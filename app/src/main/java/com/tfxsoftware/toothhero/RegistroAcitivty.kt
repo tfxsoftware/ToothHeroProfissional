@@ -36,8 +36,6 @@ class RegistroAcitivty : AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.hide()
 
         editTextContainer = findViewById<LinearLayout>(R.id.editTextContainer)
-
-
         btnCriarConta=findViewById(R.id.btnCriarConta)
         btnAdcEndereco=findViewById(R.id.btnAdcEndereco)
         btnApagarCampo=findViewById(R.id.btnApagarCampo)
