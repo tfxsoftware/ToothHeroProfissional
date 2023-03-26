@@ -34,7 +34,7 @@ class MainActivity : View.OnClickListener, AppCompatActivity(){
             finish()
         }
         if(v!!.id==R.id.btnCriarConta){
-            var intent =Intent(this,CriarContaActivity::class.java)
+            var intent =Intent(this,RegistroAcitivty::class.java)
             startActivity(intent)
             finish()
         }
