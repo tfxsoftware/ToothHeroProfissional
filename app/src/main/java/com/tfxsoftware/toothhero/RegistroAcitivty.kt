@@ -1,3 +1,5 @@
+
+
 package com.tfxsoftware.toothhero
 
 
@@ -9,18 +11,25 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
-class CriarConta : AppCompatActivity(), View.OnClickListener {
+class RegistroAcitivty : AppCompatActivity(), View.OnClickListener {
+    val firebaseAuth:FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var btnCriarConta:AppCompatButton
     lateinit var btnAdcEndereco:AppCompatButton
     lateinit var etNome:AppCompatEditText
+    lateinit var etEmail: AppCompatEditText
+    lateinit var etSenha: AppCompatEditText
     lateinit var btnApagarCampo:AppCompatButton
     lateinit var editTextContainer:LinearLayout
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        FirebaseApp.initializeApp(this)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_criar_conta)
@@ -33,6 +42,8 @@ class CriarConta : AppCompatActivity(), View.OnClickListener {
         btnAdcEndereco=findViewById(R.id.btnAdcEndereco)
         btnApagarCampo=findViewById(R.id.btnApagarCampo)
         etNome=findViewById(R.id.etNome)
+        etEmail= findViewById(R.id.etEmail)
+        etSenha=findViewById(R.id.etSenha)
 
 
         btnAdcEndereco.setOnClickListener(this)
@@ -45,6 +56,17 @@ class CriarConta : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v:View?){
 
         if(v!!.id==R.id.btnCriarConta){
+            firebaseAuth.sendPasswordResetEmail("aswespeak.tfx@gmail.com")
+            try{firebaseAuth.createUserWithEmailAndPassword(etEmail.text.toString(), etSenha.text.toString()).addOnCompleteListener(this){
+                task ->
+                if (task.isSuccessful){
+                    Toast.makeText(this, "conta criada!", Toast.LENGTH_SHORT).show()
+                }
+                else Toast.makeText(this, "erro ao criar conta", Toast.LENGTH_SHORT).show()
+            }}
+            catch (e: java.lang.Exception){
+                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+            }
             var intent= Intent(this,LoginConcluido::class.java)
             intent.putExtra("nome",etNome.text.toString())
             startActivity(intent)
