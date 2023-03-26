@@ -15,7 +15,7 @@
             android:name=".LoginConcluido"
             android:exported="false"/>
         <activity
-            android:name=".CriarConta"
+            android:name=".CriarContaActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

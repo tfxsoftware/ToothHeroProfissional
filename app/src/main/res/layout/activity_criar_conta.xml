@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:padding="50dp"
     android:background="#0FCCE4"
-    tools:context=".CriarConta"
+    tools:context=".CriarContaActivity"
     android:scrollbars="vertical">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -51,6 +51,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etTelefone"
             android:inputType="number"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTelefone"
