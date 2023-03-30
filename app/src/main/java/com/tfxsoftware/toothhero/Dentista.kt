@@ -10,7 +10,8 @@ data class Dentista(
     var cro: String,
     var curriculo:String,
     var enderecos: MutableList<String>,
-    var foto: String? = null
+    var foto: String? = null,
+    var id: String? = null
 
 ) {
     init{
@@ -22,9 +23,17 @@ data class Dentista(
             enderecos.isEmpty()
         ) throw Exception ("Preencha todos campos")
         if (!this.cro.isDigitsOnly()) throw Exception("Cro Inválido")
-        if (this.senha.length < 8) throw Exception ("Senha muito curta!")
+        if (this.senha.length < 6) throw Exception ("Senha muito curta!")
+        id = email
 
 
     }
+
+    override fun toString(): String {
+        return enderecos[1]
+    }
+
+
+
 
 }

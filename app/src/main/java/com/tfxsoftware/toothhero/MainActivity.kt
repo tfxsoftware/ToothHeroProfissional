@@ -8,36 +8,23 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import com.tfxsoftware.toothhero.databinding.ActivityMainBinding
 
-class MainActivity : View.OnClickListener, AppCompatActivity(){
-    lateinit var btnEntrar:AppCompatButton
-    lateinit var btnCriarConta:AppCompatButton
-    lateinit var etEmail:AppCompatEditText
+class MainActivity :AppCompatActivity(){
 
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(binding.root)
         supportActionBar!!.hide()
 
-        btnEntrar=findViewById(R.id.btnEntrar)
-        btnCriarConta=findViewById(R.id.btnCriarConta)
-        etEmail=findViewById(R.id.etEmail)
-        btnEntrar.setOnClickListener(this)
-        btnCriarConta.setOnClickListener(this)
+        binding.btnCriarConta.setOnClickListener {
+            val intent = Intent(this, RegistroAcitivty::class.java)
+            startActivity(intent)
+        }
 
-    }
-    override fun onClick(v: View?){
-        if(v!!.id == R.id.btnEntrar){
-            var intent= Intent(this,LoginConcluido::class.java)
-            intent.putExtra("email",etEmail.text.toString())
-            startActivity(intent)
-            finish()
-        }
-        if(v!!.id==R.id.btnCriarConta){
-            var intent =Intent(this,RegistroAcitivty::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
 
