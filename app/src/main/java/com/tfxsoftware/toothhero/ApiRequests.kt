@@ -12,7 +12,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 class ApiRequests() {
 
-    private val registerUrl = "https://us-central1-toothhero-4102d.cloudfunctions.net/addNewData"
+    private val registerUrl = "INSERIR URL DA FIREBASE FUNCTION AQUI"
 
     suspend fun addNovoDentista(dentista: Dentista): String = withContext(Dispatchers.IO) {
         val json = Gson().toJson(dentista)
