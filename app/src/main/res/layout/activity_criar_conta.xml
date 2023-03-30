@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:padding="50dp"
-    android:background="#0FCCE4"
-    tools:context=".CriarContaActivity"
+    android:background="@drawable/backgroud"
+    tools:context=".RegistroAcitivty"
     android:scrollbars="vertical">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -15,6 +16,8 @@
         android:orientation="vertical">
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvLoginTexto"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cadastro"
@@ -23,6 +26,8 @@
             />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNome"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nome:"
@@ -40,6 +45,8 @@
             />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTelefone"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Telefone:"
@@ -59,6 +66,8 @@
             />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCRO"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="N°CRO:"
@@ -71,6 +80,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEmail"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
@@ -87,6 +98,8 @@
             />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSenha"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Senha"
@@ -102,6 +115,8 @@
             />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSenhaConfirm"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Confirmar senha"
@@ -126,6 +141,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAdcEndereco"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Adicionar endereço"
@@ -142,6 +158,8 @@
             android:visibility="invisible" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCurriculo"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnAdcEndereco"
@@ -161,6 +179,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCriarConta"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Criar conta"
