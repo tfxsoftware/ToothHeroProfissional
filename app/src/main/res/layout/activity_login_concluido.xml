@@ -12,14 +12,17 @@
         android:id="@+id/tvLoginSucesso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login feito com sucesso!"
+        android:text="Login feito com sucesso!\nEstado atual é logado"
         android:layout_marginTop="350dp"
         android:textSize="30sp"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMsgBoasVindas"
+
+    <Button
+        android:id="@+id/btnDeslogar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_below="@id/tvLoginSucesso"/>
+        android:text="sair"
+        android:layout_below="@id/tvLoginSucesso"
+        />
+
 
 </RelativeLayout>

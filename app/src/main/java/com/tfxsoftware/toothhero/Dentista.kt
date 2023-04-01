@@ -1,6 +1,9 @@
 package com.tfxsoftware.toothhero
 
+import android.text.TextUtils
+import android.util.Patterns
 import androidx.core.text.isDigitsOnly
+
 
 data class Dentista(
     var nome: String,
@@ -24,7 +27,9 @@ data class Dentista(
         ) throw Exception ("Preencha todos campos")
         if (!this.cro.isDigitsOnly()) throw Exception("Cro Inválido")
         if (this.senha.length < 6) throw Exception ("Senha muito curta!")
+        if(isValidEmail(email)==false) throw Exception("Email inválido")
         id = email
+
 
 
     }
@@ -36,4 +41,8 @@ data class Dentista(
 
 
 
+}
+
+private fun isValidEmail(email: CharSequence): Boolean {
+    return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
