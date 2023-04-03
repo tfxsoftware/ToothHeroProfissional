@@ -16,7 +16,7 @@ import kotlinx.coroutines.cancel
 import okhttp3.internal.wait
 
 class RegistroActivity : AppCompatActivity() {
-
+    //testando push
     private lateinit var binding: ActivityRegistroBinding
     private val apiRequests = ApiRequests()
 
