@@ -12,7 +12,7 @@
         android:theme="@style/Theme.ToothHero"
         tools:targetApi="31">
         <activity
-            android:name=".RegistroAcitivty"
+            android:name=".RegistroActivity"
             android:exported="false" />
         <activity
             android:name=".LoginConcluido"

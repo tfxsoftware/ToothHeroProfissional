@@ -1,28 +1,43 @@
 package com.tfxsoftware.toothhero
 
+import android.content.ContentValues.TAG
+import android.content.Context
+import android.util.Log
+import com.google.firebase.FirebaseApp
+import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.functions.FirebaseFunctionsException
+import com.google.firebase.functions.ktx.functions
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
+import com.google.gson.JsonObject
+import org.json.JSONObject
+import java.util.concurrent.CountDownLatch
+
 
 class ApiRequests() {
 
-    private val registerUrl = "INSERIR URL DA FIREBASE FUNCTION AQUI"
 
-    suspend fun addNovoDentista(dentista: Dentista): String = withContext(Dispatchers.IO) {
+    fun addNovoDentista(dentista: Dentista) {
+        val functions = FirebaseFunctions.getInstance("southamerica-east1")
         val json = Gson().toJson(dentista)
-        val requestBody = json.toRequestBody("application/json".toMediaTypeOrNull())
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url(registerUrl)
-            .post(requestBody)
-            .build()
-        val response = client.newCall(request).execute()
-        return@withContext response.body?.string() ?: "contato"
+        val jsonObject = JSONObject(json)
+
+        val addData = functions.getHttpsCallable("addNewDentista")
+        addData.call(jsonObject)
+            .addOnSuccessListener { result ->
+
+            }
+            .addOnFailureListener { exception ->
+                if (exception is FirebaseFunctionsException) {
+                    val code = exception.code
+                    val message = exception.message
+                    val details = exception.details
+                    Log.e(TAG, "Falha:  $code: $message\nDetails: $details", exception)
+                } else {
+                    Log.e(TAG, "Failed to add data: ", exception)
+                }
+            }
+
+
     }
 }

@@ -21,7 +21,7 @@ class MainActivity :AppCompatActivity(){
         supportActionBar!!.hide()
 
         binding.btnCriarConta.setOnClickListener {
-            val intent = Intent(this, RegistroAcitivty::class.java)
+            val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
         }
 

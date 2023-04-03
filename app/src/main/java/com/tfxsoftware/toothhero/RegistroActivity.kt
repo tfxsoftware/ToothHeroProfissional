@@ -10,24 +10,16 @@ import android.view.View
 import android.widget.*
 import androidx.core.view.get
 import com.google.firebase.FirebaseApp
-import com.google.gson.Gson
 
 import com.tfxsoftware.toothhero.databinding.ActivityRegistroBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.internal.wait
 
-class RegistroAcitivty : AppCompatActivity() {
+class RegistroActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistroBinding
-    private val apiRegisterUrl = "https://us-central1-toothhero-4102d.cloudfunctions.net/addNewData"
-    private var apiResponse: String? = "teste"
-    private val scope = CoroutineScope(Dispatchers.Main)
+    private val apiRequests = ApiRequests()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,11 +40,11 @@ class RegistroAcitivty : AppCompatActivity() {
             newEditText.inputType = InputType.TYPE_CLASS_TEXT
 
             val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,//width
-                LinearLayout.LayoutParams.WRAP_CONTENT //height
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
             )
             if (binding.editTextContainer.childCount > 0) {
-                layoutParams.topMargin = 16 // adiciona um espaço entre os EditTexts
+                layoutParams.topMargin = 16
             }
             binding.editTextContainer.addView(newEditText, layoutParams)
             if (binding.editTextContainer.childCount == 3) {
@@ -68,8 +60,9 @@ class RegistroAcitivty : AppCompatActivity() {
         }
         // BOTAO CRIAR CONTA
         binding.btnCriarConta.setOnClickListener {
+            binding.btnCriarConta.isActivated = false
             val listaEndereco = mutableListOf<String>()
-            for (i in 0 until binding.editTextContainer.childCount) {
+            for (i in 0 until  binding.editTextContainer.childCount) {
                 val entry = binding.editTextContainer[i] as EditText
                 listaEndereco.add(entry.text.toString())
             }
@@ -81,42 +74,24 @@ class RegistroAcitivty : AppCompatActivity() {
                         binding.etEmail.text.toString(),
                         binding.etSenha.text.toString(),
                         binding.etCRO.text.toString(),
-                        binding.etCurriculo.textAlignment.toString(),
+                        binding.etCurriculo.text.toString(),
                         listaEndereco)
-                    scope.launch {
-                        try {
-
-                            val response = ApiRequests().addNovoDentista(dentista)
-                            Toast.makeText(this@RegistroAcitivty, "Conta Criada com sucesso!", Toast.LENGTH_SHORT).show()
-                        } catch (e: Exception) {
-                            Toast.makeText(this@RegistroAcitivty, e.message, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                    limparCampos()
+                    apiRequests.addNovoDentista(dentista)
+                    Toast.makeText(this, "Dentista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
                 } catch(e: Exception){
                     Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                }
+                finally {
+
                 }
             }
 
         }
     }
 
-    fun limparCampos(){
-        binding.etNome.text = null
-        binding.etTelefone.text = null
-        binding.etEmail.text = null
-        binding.etSenha.text = null
-        binding.etSenhaConfirm.text = null
-        binding.etCRO.text = null
-        binding.etCurriculo.text = null
-        for (i in 0 until binding.editTextContainer.childCount) binding.editTextContainer.removeViewAt(i)
-    }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
-        scope.cancel()
-    }
+
 
 
 }
