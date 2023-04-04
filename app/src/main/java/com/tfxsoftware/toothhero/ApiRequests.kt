@@ -9,7 +9,7 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 
 class ApiRequests() {
-
+    //push
     private val registerUrl = "https://us-central1-toothhero-4102d.cloudfunctions.net/addNewData"
 
     suspend fun addNovoDentista(dentista: Dentista): String = withContext(Dispatchers.IO) {
