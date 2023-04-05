@@ -16,7 +16,7 @@ import kotlinx.coroutines.cancel
 import okhttp3.internal.wait
 
 class RegistroActivity : AppCompatActivity() {
-    //testando push
+
     private lateinit var binding: ActivityRegistroBinding
     private val apiRequests = ApiRequests()
 
@@ -76,22 +76,23 @@ class RegistroActivity : AppCompatActivity() {
                         binding.etCRO.text.toString(),
                         binding.etCurriculo.text.toString(),
                         listaEndereco)
-                    apiRequests.addNovoDentista(dentista)
-                    Toast.makeText(this, "Dentista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                    apiRequests.addNovoDentista(dentista) { success, errorMessage ->
+                        if (success) {
+                            Toast.makeText(this, "Dentista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
                 } catch(e: Exception){
                     Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                 }
-                finally {
 
-                }
+
             }
-
         }
     }
-
-
-
-
 
 
 }

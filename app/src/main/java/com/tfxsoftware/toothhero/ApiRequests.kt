@@ -15,29 +15,36 @@ import java.util.concurrent.CountDownLatch
 
 
 class ApiRequests() {
+    private val functions = FirebaseFunctions.getInstance("southamerica-east1")
 
+    fun addNovoDentista(dentista: Dentista, callback: (Boolean, String?) -> Unit) {
 
-    fun addNovoDentista(dentista: Dentista) {
-        val functions = FirebaseFunctions.getInstance("southamerica-east1")
         val json = Gson().toJson(dentista)
         val jsonObject = JSONObject(json)
 
         val addData = functions.getHttpsCallable("addNewDentista")
         addData.call(jsonObject)
-            .addOnSuccessListener { result ->
-
+            .addOnSuccessListener {
+                callback(true, null)
             }
             .addOnFailureListener { exception ->
-                if (exception is FirebaseFunctionsException) {
-                    val code = exception.code
-                    val message = exception.message
-                    val details = exception.details
-                    Log.e(TAG, "Falha:  $code: $message\nDetails: $details", exception)
-                } else {
-                    Log.e(TAG, "Failed to add data: ", exception)
-                }
+                    callback(false, exception.message)
             }
-
-
     }
+
+    fun authUser(email: String, senha: String, callback: (Boolean, String?) -> Unit){
+        val jsonObject = JSONObject().apply {
+            put("email", email)
+            put("senha", senha)
+        }
+        val loginUser = functions.getHttpsCallable("loginUser")
+        loginUser.call(jsonObject)
+            .addOnSuccessListener {
+                callback(true, null)
+            }
+            .addOnFailureListener { exception ->
+                callback(false, exception.message)
+            }
+    }
+
 }
