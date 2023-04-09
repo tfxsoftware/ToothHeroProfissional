@@ -32,19 +32,4 @@ class ApiRequests() {
             }
     }
 
-    fun authUser(email: String, senha: String, callback: (Boolean, String?) -> Unit){
-        val jsonObject = JSONObject().apply {
-            put("email", email)
-            put("senha", senha)
-        }
-        val loginUser = functions.getHttpsCallable("loginUser")
-        loginUser.call(jsonObject)
-            .addOnSuccessListener {
-                callback(true, null)
-            }
-            .addOnFailureListener { exception ->
-                callback(false, exception.message)
-            }
-    }
-
 }
