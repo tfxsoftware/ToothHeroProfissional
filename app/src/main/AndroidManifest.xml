@@ -15,7 +15,7 @@
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginConcluido"
+            android:name=".DentistaActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

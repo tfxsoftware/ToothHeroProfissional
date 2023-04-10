@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:padding="50dp"
     android:background="@drawable/backgroud"
-    tools:context=".RegistroAcitivty"
+    tools:context=".RegistroActivity"
     android:scrollbars="vertical">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

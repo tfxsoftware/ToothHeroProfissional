@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.tfxsoftware.toothhero.databinding.ActivityMainBinding
 
 class MainActivity :AppCompatActivity() {
@@ -20,7 +19,7 @@ class MainActivity :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
-        setContentView(binding.root)
+        setContentView(view)
         supportActionBar!!.hide()
 
         binding.btnCriarConta.setOnClickListener {
@@ -35,7 +34,7 @@ class MainActivity :AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val intent = Intent(this, LoginConcluido::class.java)
+                        val intent = Intent(this, DentistaActivity::class.java)
                         startActivity(intent)
                     } else {
                         val errorMessage = when (task.exception) {
