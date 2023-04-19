@@ -6,6 +6,12 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.tfxsoftware.toothhero.HomeFragment"
-        android:label="Home" />
+        android:label="Home"
+        />
+    <fragment
+        android:id="@+id/listaEmergenciasFragment"
+        android:name="com.tfxsoftware.toothhero.ListaEmergenciasFragment"
+        android:label="Lista"
+        />
 
 </navigation>

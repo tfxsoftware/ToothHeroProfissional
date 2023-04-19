@@ -15,6 +15,7 @@ class MainActivity :AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val auth = FirebaseAuth.getInstance()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,28 +23,43 @@ class MainActivity :AppCompatActivity() {
         setContentView(view)
         supportActionBar!!.hide()
 
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this, DentistaActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+
         binding.btnCriarConta.setOnClickListener {
             val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnEntrar.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            val senha = binding.etSenha.text.toString()
+            try {
+                binding.btnEntrar.isActivated = false
+                val email = binding.etEmail.text.toString()
+                val senha = binding.etSenha.text.toString()
 
-            auth.signInWithEmailAndPassword(email, senha)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val intent = Intent(this, DentistaActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        val errorMessage = when (task.exception) {
-                            is FirebaseAuthInvalidCredentialsException -> "Credenciais inválidos"
-                            else -> "Autenticação falhou! Tente novamente mais tarde!"
+                auth.signInWithEmailAndPassword(email, senha)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val intent = Intent(this, DentistaActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            val errorMessage = when (task.exception) {
+                                is FirebaseAuthInvalidCredentialsException -> "Credenciais inválidos"
+                                else -> "Autenticação falhou! Tente novamente mais tarde!"
+                            }
+                            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                         }
-                        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                     }
-                }
+            }catch(e: Exception){
+                binding.btnEntrar.isActivated = true
+                Toast.makeText(this, "Preencha ambosos campos!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
