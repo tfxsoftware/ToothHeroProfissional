@@ -12,6 +12,11 @@
         android:theme="@style/Theme.ToothHero"
         tools:targetApi="33">
         <activity
+            android:name=".EmergenciaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_emergencia"
+            android:theme="@style/Theme.ToothHero.NoActionBar" />
+        <activity
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
@@ -22,15 +27,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
-            android:name="com.tfxsoftware.toothhero.ToothHeroFireBaseMessagingService"
+            android:name=".ToothHeroFireBaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-
             </intent-filter>
         </service>
     </application>

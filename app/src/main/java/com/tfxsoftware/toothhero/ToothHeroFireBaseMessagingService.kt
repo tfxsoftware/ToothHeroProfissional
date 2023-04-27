@@ -13,6 +13,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.google.gson.Gson
 
 
 class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
@@ -27,18 +28,17 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
         remoteMessage.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
             it.body?.let { body ->
-                sendNotification("$body")
+                remoteMessage.data?.let { data ->
+                    val emergencia = Gson().fromJson(data.toString(), Emergencia::class.java)
+                    sendNotification(body, emergencia)
+                }
             }
         }
     }
     // [END receive_message]
 
     // [START on_new_token]
-    /**
-     * Called if the FCM registration token is updated. This may occur if the security of
-     * the previous token had been compromised. Note that this is called when the
-     * FCM registration token is initially generated so this is where you would retrieve the token.
-     */
+
     override fun onNewToken(token: String) {
         Log.d(TAG, "Refreshed token: $token")
 
@@ -79,10 +79,12 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
     }
 
 
-    private fun sendNotification(messageBody: String) {
-        val intent = Intent(this, MainActivity::class.java).apply {
+    private fun sendNotification(messageBody: String, emergencia: Emergencia) {
+        val intent = Intent(this, EmergenciaActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            putExtra("emergencia", emergencia)
         }
+
         val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val channelId = getString(R.string.default_notification_channel_id)
