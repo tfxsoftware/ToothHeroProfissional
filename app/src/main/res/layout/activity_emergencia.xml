@@ -6,26 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".EmergenciaActivity">
 
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="642dp"
+        android:text="Nova Emergência"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/bAceite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tvNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="411dp"
-        android:layout_marginBottom="712dp"
-        android:text=""
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="361dp"
+        android:layout_marginBottom="714dp"
+        android:text="paciente"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
 
-    <Button
-        android:id="@+id/bAceite"
+
+    <TextView
+        android:id="@+id/tvData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="545dp"
+        android:text="02/05/2023"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/bRejeite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvNome"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+
+    <TextView
+        android:id="@+id/tvTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1909088979"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bAceite"
+        android:layout_width="119dp"
+        android:layout_height="82dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="582dp"
-        android:layout_marginBottom="101dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/verde"
         android:text="Aceitar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bRejeite"
@@ -33,14 +80,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bRejeite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="117dp"
+        android:layout_height="79dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="582dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="101dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/red"
         android:text="Rejeitar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

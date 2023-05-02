@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroud"
+    android:padding="16dp"
     tools:context=".HomeFragment">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/Perfil"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/perfildentista" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNomeHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Perfil"
+        android:layout_marginTop="210dp"
+        android:gravity="center"
+        android:text="Dr. Cleitinho"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Perfil"
+        android:layout_marginTop="260dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
         android:text="Disponível" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAtendimentos"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="290dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="+500 Atendimentos"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAvaliacoesU"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="279dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="4,2 Avaliações dos Usúarios"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAnosPlataforma"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="290dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2 Anos na Plataforma"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCurriculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAnosPlataforma"
+        android:layout_marginTop="450dp"
+        android:text="CURRICULO"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etTxCurriculo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etTxCurriculo"
+        android:background="@android:color/background_light"
+        android:layout_marginTop="480dp"
+        android:padding="@dimen/text_margin"
+        android:hint="O atendimento de mais de 120 pacientes ortodônticos adolescentes ao longo da minha carreira ondotológica de cinco anos me ensinou muito sobre psicologia adolescente."
+        android:textColorHint="#999999" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAvaliacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="640dp"
+        android:textSize="18sp"
+        android:text="AVALIAÇÕES DOS USÚARIOS"
+        android:backgroundTint="@color/botao_escuro" />
+
+
 </FrameLayout>
