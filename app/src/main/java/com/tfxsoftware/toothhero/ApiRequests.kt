@@ -32,4 +32,19 @@ class ApiRequests() {
             }
     }
 
+    fun addNovoAtendimento(atendimento: Atendimento, callback: (Boolean, String?) -> Unit) {
+
+        val json = Gson().toJson(atendimento)
+        val jsonObject = JSONObject(json)
+
+        val addData = functions.getHttpsCallable("addNewAtendimento")
+        addData.call(jsonObject)
+            .addOnSuccessListener {
+                callback(true, null)
+            }
+            .addOnFailureListener { exception ->
+                callback(false, exception.message)
+            }
+    }
+
 }
