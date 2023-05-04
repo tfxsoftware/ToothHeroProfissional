@@ -100,9 +100,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvCadastrarse"
         android:layout_marginTop="40dp"
-        android:textSize="18sp"
+        android:background="@drawable/btn_rounded_bg"
         android:text="Criar conta"
         android:textColor="@android:color/white"
-        android:background="@drawable/btn_rounded_bg"/>
+        android:textSize="18sp" />
 
 </RelativeLayout>

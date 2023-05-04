@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.navigation.fragment.NavHostFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -21,9 +22,9 @@ class DentistaActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (isGranted) {
-            // FCM SDK (and your app) can post notifications.
+            Log.d("access", "granted")
         } else {
-            // TODO: Inform user that that your app will not show notifications.
+            Log.d("access","not granted")
         }
     }
 
@@ -76,10 +77,10 @@ class DentistaActivity : AppCompatActivity() {
                         .setPositiveButton("Sim") { _, _ ->
                             auth.signOut()
                             finish()
-                            true
+
                         }
                         .setNegativeButton("Não") { _, _ ->
-                            false
+
                         }
                         .create()
 

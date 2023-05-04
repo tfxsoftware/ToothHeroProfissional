@@ -12,8 +12,7 @@ import androidx.core.view.get
 import com.google.firebase.FirebaseApp
 
 import com.tfxsoftware.toothhero.databinding.ActivityRegistroBinding
-import kotlinx.coroutines.cancel
-import okhttp3.internal.wait
+
 
 class RegistroActivity : AppCompatActivity() {
 

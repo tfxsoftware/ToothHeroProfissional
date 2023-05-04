@@ -1,20 +1,19 @@
 package com.tfxsoftware.toothhero
 
-import android.app.NotificationChannel
+
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
-import android.os.Build
-import android.os.Bundle
+
+
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.google.gson.Gson
+
 
 
 class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
@@ -56,30 +55,7 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
     }
     // [END on_new_token]
 
-    /**
-     * Schedule async work using WorkManager.
-     */
-    private fun scheduleJob() {
-        // [START dispatch_job]
 
-        // [END dispatch_job]
-    }
-
-    /**
-     * Handle time allotted to BroadcastReceivers.
-     */
-    private fun handleNow() {
-        Log.d(TAG, "Short lived task is done.")
-    }
-
-    /**
-     * Persist token to third-party servers.
-     *
-     * Modify this method to associate the user's FCM registration token with any server-side account
-     * maintained by your application.
-     *
-     * @param token The new token.
-     */
     private fun sendRegistrationToServer(token: String?) {
         // TODO: Implement this method to send token to your app server.
         Log.d(TAG, "sendRegistrationTokenToServer($token)")
@@ -115,14 +91,7 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         // Since android Oreo notification channel is needed.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                getString(R.string.default_notification_channel_name),
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            notificationManager.createNotificationChannel(channel)
-        }
+
         notificationManager.notify(99, notificationBuilder.build())
     }
 

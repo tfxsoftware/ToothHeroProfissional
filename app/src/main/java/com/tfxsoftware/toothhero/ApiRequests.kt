@@ -1,20 +1,15 @@
 package com.tfxsoftware.toothhero
 
-import android.content.ContentValues.TAG
-import android.content.Context
-import android.util.Log
-import com.google.firebase.FirebaseApp
+
 import com.google.firebase.functions.FirebaseFunctions
-import com.google.firebase.functions.FirebaseFunctionsException
-import com.google.firebase.functions.ktx.functions
-import com.google.firebase.ktx.Firebase
+
 import com.google.gson.Gson
-import com.google.gson.JsonObject
+
 import org.json.JSONObject
-import java.util.concurrent.CountDownLatch
 
 
-class ApiRequests() {
+
+class ApiRequests {
     private val functions = FirebaseFunctions.getInstance("southamerica-east1")
 
     fun addNovoDentista(dentista: Dentista, callback: (Boolean, String?) -> Unit) {
