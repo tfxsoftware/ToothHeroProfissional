@@ -1,11 +1,13 @@
 package com.tfxsoftware.toothhero
 
 
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
+import android.os.Build
 
 
 import android.util.Log
@@ -91,6 +93,13 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         // Since android Oreo notification channel is needed.
+
+            val channel = NotificationChannel(
+                channelId,
+                getString(R.string.default_notification_channel_name),
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            notificationManager.createNotificationChannel(channel)
 
         notificationManager.notify(99, notificationBuilder.build())
     }

@@ -1,5 +1,6 @@
 package com.tfxsoftware.toothhero
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,12 +11,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.tfxsoftware.toothhero.databinding.ActivityEmergenciaBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import com.google.firebase.storage.FirebaseStorage
+
+import com.google.firebase.storage.StorageReference
+
+
+
 
 class EmergenciaActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityEmergenciaBinding
     private var firebaseAuth = FirebaseAuth.getInstance()
+    private val storageReference:StorageReference = FirebaseStorage.getInstance().reference
+    private val megabyte: Long = 1024 * 1024
     override fun onCreate(savedInstanceState: Bundle?) {
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
         super.onCreate(savedInstanceState)
@@ -34,11 +43,18 @@ class EmergenciaActivity : AppCompatActivity() {
         Log.d("ToothHeroFirebaseMsgService", fotos.toString())
         val emergencia = Emergencia(eid, nome, telefone, fotos, datahora, status)
 
-        Log.d("ToothHeroFirebaseMsgService", emergencia.toString())
+        val imgReference = storageReference.child(emergencia.fotos!!)
+        imgReference.getBytes(megabyte).addOnSuccessListener {
+            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            binding.foto1.setImageBitmap(bmp)
+        }.addOnFailureListener{
+            Toast.makeText(this, "erro ao carregar imagem", Toast.LENGTH_SHORT).show()
+        }
 
         binding.tvPaciente.text = emergencia.nome
         binding.tvData.text = emergencia.datahora
         binding.tvNumero.text = emergencia.telefone
+
 
 
 
