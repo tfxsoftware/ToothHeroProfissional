@@ -1,21 +1,19 @@
 package com.tfxsoftware.toothhero
 
-import android.graphics.BitmapFactory
+
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import com.tfxsoftware.toothhero.databinding.ActivityEmergenciaBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import com.google.firebase.storage.FirebaseStorage
-
-import com.google.firebase.storage.StorageReference
-
-
+import com.google.firebase.storage.ktx.storage
 
 
 class EmergenciaActivity : AppCompatActivity() {
@@ -23,8 +21,7 @@ class EmergenciaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEmergenciaBinding
     private var firebaseAuth = FirebaseAuth.getInstance()
-    private val storageReference:StorageReference = FirebaseStorage.getInstance().reference
-    private val megabyte: Long = 1024 * 1024
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
         super.onCreate(savedInstanceState)
@@ -43,14 +40,20 @@ class EmergenciaActivity : AppCompatActivity() {
         Log.d("ToothHeroFirebaseMsgService", fotos.toString())
         val emergencia = Emergencia(eid, nome, telefone, fotos, datahora, status)
 
-        val imgReference = storageReference.child(emergencia.fotos!!)
-        imgReference.getBytes(megabyte).addOnSuccessListener {
-            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-            binding.foto1.setImageBitmap(bmp)
-        }.addOnFailureListener{
-            Toast.makeText(this, "erro ao carregar imagem", Toast.LENGTH_SHORT).show()
-        }
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val imageRef = storageRef.child(emergencia.fotos!!)
 
+        imageRef.downloadUrl
+            .addOnSuccessListener { uri ->
+                val imageUrl = uri.toString()
+                Glide.with(this)
+                    .load(imageUrl)
+                    .into(binding.foto1)
+            }
+            .addOnFailureListener { exception ->
+                Log.d("image", "erro ao carregar imagem, $exception")
+            }
         binding.tvPaciente.text = emergencia.nome
         binding.tvData.text = emergencia.datahora
         binding.tvNumero.text = emergencia.telefone

@@ -42,4 +42,23 @@ class ApiRequests {
             }
     }
 
+    fun getDentista(id: String?, callback: (dentista: Dentista?) -> Unit) {
+        val data = hashMapOf("id" to id)
+        functions
+            .getHttpsCallable("getDentistaById")
+            .call(data)
+            .continueWith { task ->
+                if (task.isSuccessful) {
+                    val result = task.result?.data as HashMap<*, *>?
+                    val gson = Gson()
+                    val json = gson.toJson(result)
+                    val dentista = gson.fromJson(json, Dentista::class.java)
+                    callback(dentista)
+                } else {
+                    callback(null)
+
+                }
+            }
+    }
+
 }
