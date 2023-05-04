@@ -35,11 +35,13 @@ class EmergenciaActivity : AppCompatActivity() {
             val status = extras?.getString("status")
 
         Log.d("ToothHeroFirebaseMsgService", fotos.toString())
-        val emergencia = Emergencia(eid, nome, telefone, datahora, fotos, status)
+        val emergencia = Emergencia(eid, nome, telefone, fotos, datahora, status)
 
         Log.d("ToothHeroFirebaseMsgService", emergencia.toString())
 
-        binding.tvNome.text = emergencia.nome
+        binding.tvPaciente.text = emergencia.nome
+        binding.tvData.text = emergencia.datahora
+        binding.tvNumero.text = emergencia.telefone
 
 
 
@@ -57,7 +59,7 @@ class EmergenciaActivity : AppCompatActivity() {
             intent.removeExtra("emergencia")
             finish()
         }
-        binding.bRejeite.setOnClickListener {
+        binding.bRejeitar.setOnClickListener {
             val atendimento = Atendimento(LocalDateTime.now().format(formatter),
                 emergencia.eid, firebaseAuth.currentUser?.uid, "Rejeitado")
             ApiRequests().addNovoAtendimento(atendimento){success,_ ->

@@ -195,6 +195,7 @@
             android:background="@android:color/background_light"
             android:padding="40dp"
             android:hint="Digite seu currículo"/>
+
         <Switch
             android:id="@+id/switch1"
             android:layout_width="wrap_content"

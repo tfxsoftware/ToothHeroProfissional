@@ -13,4 +13,5 @@
     <color name="azul_escuro">#4E97D1</color>
     <color name="azulcenter">#DFE9F5</color>
     <color name="botao_escuro">#399FEF</color>
+    <color name="azul_borda">#00AEFF</color>
 </resources>
