@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_dente_png" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="TOOTH HERO"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHero"
+        android:layout_marginTop="32dp"
+        android:text="E-MAIL"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEmail"
+        android:background="@drawable/edit_text_border"
+        android:padding="16dp"
+        android:hint="Digite seu email"
+        android:textColorHint="#999999"
+        android:inputType="textEmailAddress" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etEmail"
+        android:layout_marginTop="25dp"
+        android:text="SENHA"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSenha"
+        android:background="@drawable/edit_text_border"
+        android:padding="16dp"
+        android:hint="Digite sua senha"
+        android:inputType="textPassword"
+        android:textColorHint="#999999" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEntrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etSenha"
+        android:layout_marginTop="45dp"
+        android:text="Entrar"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_rounded_bg"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCadastrarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnEntrar"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Caso não tenha conta"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCriarConta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCadastrarse"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        android:text="Criar conta"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_rounded_bg"/>
+
+</RelativeLayout>
