@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+   <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgroud"
+    tools:context=".EmergenciaActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:text="NOVA EMERGÊNCIA"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNome"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="NOME"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPaciente"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDataHora"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="150dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="DATA E HORA"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvData"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="150dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTelefone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TELEFONE"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNumero"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bAceite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="670dp"
+        android:text="ACEITAR"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_rounded_bg"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bRejeitar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bAceite"
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"
+        android:text="REJEITAR"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_rounded_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/foto1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/fotoboca" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/foto2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/fotoboca2" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/foto3"
+            android:layout_width="110dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/dentequebrado" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

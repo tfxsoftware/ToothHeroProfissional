@@ -1,136 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:padding="50dp"
+    android:padding="16dp"
     android:background="@drawable/backgroud"
     tools:context=".RegistroActivity"
     android:scrollbars="vertical">
+
+
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/Perfil"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/perfildentista" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvLoginTexto"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastro"
-            android:layout_centerHorizontal="true"
-            android:textSize="30sp"
-            />
+            android:text="Adicionar foto de perfil"
+            android:layout_gravity="center"
+            android:textSize="22sp"
+            android:layout_marginTop="5dp"/>
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNome"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
+            android:id="@+id/tvNomeCadastro"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome:"
-            android:textSize="16dp"
-            android:layout_below="@id/tvLoginTexto"
-            android:layout_alignStart="@id/tvLoginTexto"
-            />
+            android:layout_marginTop="40dp"
+            android:text="NOME"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvNome"
-            android:layout_alignStart="@id/tvNome"
-            />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTelefone"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telefone:"
-            android:textSize="16dp"
-            android:layout_below="@id/etNome"
-            android:layout_alignStart="@id/etNome"
-            />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etTelefone"
-            android:inputType="number"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvTelefone"
-            android:layout_alignStart="@id/tvNome"
-            />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCRO"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="N°CRO:"
-            android:layout_below="@+id/etTelefone"/>
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etCRO"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tvCRO"/>
+            android:background="@android:color/background_light"
+            android:padding="16dp"
+            android:hint="Digite seu nome"
+            android:textColorHint="#999999" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEmail"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:textSize="16dp"
-            android:layout_below="@id/etCRO"
-            android:layout_alignStart="@id/tvLoginTexto"
-            />
+            android:text="E-MAIL"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="25dp"/>
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tvEmail"
-            />
+            android:background="@android:color/background_light"
+            android:padding="16dp"
+            android:hint="Digite seu e-mail"
+            android:textColorHint="#999999" />
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSenha"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:id="@+id/tvTelefone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Senha"
-            android:layout_below="@id/etEmail"
-            android:layout_alignStart="@id/etEmail"/>
+            android:layout_marginTop="25dp"
+            android:text="TELEFONE"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etSenha"
-            android:inputType="textPassword"
+            android:id="@+id/etTelefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/etEmail"
-            />
+            android:layout_below="@id/tvNome"
+            android:background="@android:color/background_light"
+            android:padding="16dp"
+            android:hint="Digite seu telefone"
+            android:textColorHint="#999999" />
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSenhaConfirm"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:id="@+id/tvCro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirmar senha"
-            android:layout_below="@id/etSenha"
-            android:layout_alignStart="@id/etEmail"/>
+            android:layout_marginTop="25dp"
+            android:text="N° DA CRO"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCRO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@android:color/background_light"
+            android:hint="Digite seu N°CRO"
+            android:textColorHint="#999999"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="SENHA"
+            android:textColor="@color/black"
+            android:textSize="22sp"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@android:color/background_light"
+            android:hint="Digite sua senha"
+            android:textColorHint="#999999"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="CONFIRMAR SENHA"
+            android:textColor="@color/black"
+            android:textSize="22sp"/>
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etSenhaConfirm"
             android:layout_width="match_parent"
-            android:inputType="textPassword"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tvSenhaConfirm"
-            />
-
+            android:padding="16dp"
+            android:background="@android:color/background_light"
+            android:hint="Digite novamente sua senha"
+            android:textColorHint="#999999"/>
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/editTextContainer"
@@ -138,32 +146,44 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/etSenhaConfirm"/>
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAdcEndereco"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Adicionar endereço"
-            android:layout_below="@+id/editTextContainer"/>
+            android:hint="Digite o endreço"
+            android:textColorHint="#999999"
+            android:layout_below="@+id/editTextContainer"
+            android:textSize="22sp"
+            android:layout_marginTop="25dp"
+            android:padding="16dp"
+            android:background="@android:color/background_light"
+            android:backgroundTint="@color/botao_escuro"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnApagarCampo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextContainer"
             android:layout_alignParentLeft="true"
             android:layout_toEndOf="@id/btnAdcEndereco"
             android:text="Apagar campo"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:textSize="22sp"
+            android:layout_marginTop="25dp"
+            android:padding="16dp"
+            android:backgroundTint="@color/botao_escuro"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCurriculo"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnAdcEndereco"
+            android:textSize="22sp"
+            android:layout_marginTop="25dp"
             android:text="Escreva um breve currículo com até 2.000 caractéres:"/>
+
 
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -172,20 +192,31 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:layout_below="@+id/tvCurriculo"
+            android:background="@android:color/background_light"
+            android:padding="40dp"
+            android:hint="Digite seu currículo"/>
 
-
-            />
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="22sp"
+            android:text="Aceito ser um credenciado" />
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCriarConta"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Criar conta"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:layout_below="@+id/etCurriculo"
-            />
+            android:layout_marginTop="30dp"
+            android:padding="16dp"
+            android:textSize="22sp"
+            android:backgroundTint="@color/botao_escuro"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

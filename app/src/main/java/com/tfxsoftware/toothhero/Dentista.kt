@@ -29,7 +29,7 @@ data class Dentista(
     }
 
     override fun toString(): String {
-        return nome
+        return "$nome, $telefone, $email, $senha, $cro, $curriculo"
     }
 
 

@@ -12,8 +12,7 @@ import androidx.core.view.get
 import com.google.firebase.FirebaseApp
 
 import com.tfxsoftware.toothhero.databinding.ActivityRegistroBinding
-import kotlinx.coroutines.cancel
-import okhttp3.internal.wait
+
 
 class RegistroActivity : AppCompatActivity() {
 
@@ -76,12 +75,12 @@ class RegistroActivity : AppCompatActivity() {
                         binding.etCRO.text.toString(),
                         binding.etCurriculo.text.toString(),
                         listaEndereco)
-                    apiRequests.addNovoDentista(dentista) { success, errorMessage ->
+                    apiRequests.addNovoDentista(dentista) { success, _ ->
                         if (success) {
                             Toast.makeText(this, "Dentista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
                             finish()
                         } else {
-                            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Erro ao cadastrar dentista!", Toast.LENGTH_SHORT).show()
                         }
                     }
 
