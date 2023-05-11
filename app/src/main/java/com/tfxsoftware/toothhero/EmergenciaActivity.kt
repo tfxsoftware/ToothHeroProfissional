@@ -49,7 +49,7 @@ class EmergenciaActivity : AppCompatActivity() {
                 val imageUrl = uri.toString()
                 Glide.with(this)
                     .load(imageUrl)
-                    .into(binding.foto1)
+                    .into(binding.foto2)
             }
             .addOnFailureListener { exception ->
                 Log.d("image", "erro ao carregar imagem, $exception")

@@ -1,5 +1,6 @@
 package com.tfxsoftware.toothhero
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.navigation.fragment.NavHostFragment
@@ -71,15 +72,15 @@ class DentistaActivity : AppCompatActivity() {
                     findNavController(R.id.nav_host_fragment).navigate(R.id.listaEmergenciasFragment)
                     true
                 }
-                R.id.historicoFragment -> {
-                    true
-                }
+
                 R.id.navigation_logout -> {
                     val dialog = AlertDialog.Builder(this)
                         .setTitle("Logout")
                         .setMessage("Tem certeza que deseja sair?")
                         .setPositiveButton("Sim") { _, _ ->
                             auth.signOut()
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
                             finish()
 
                         }
