@@ -17,7 +17,6 @@ import com.tfxsoftware.toothhero.databinding.ActivityDentistaBinding
 class DentistaActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
     private lateinit var binding: ActivityDentistaBinding
-    var dentista: Dentista? = null
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -51,11 +50,8 @@ class DentistaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        ApiRequests().getDentista(auth.uid){
-            dentista = it
-            Log.d("sign in", dentista.toString())
-            Log.d("sign in", auth.uid!!)
-        }
+
+
         binding = ActivityDentistaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
