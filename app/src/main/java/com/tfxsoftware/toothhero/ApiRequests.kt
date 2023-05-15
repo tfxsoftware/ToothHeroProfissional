@@ -1,6 +1,7 @@
 package com.tfxsoftware.toothhero
 
 
+import android.util.Log
 import com.google.firebase.functions.FirebaseFunctions
 
 import com.google.gson.Gson
@@ -61,4 +62,20 @@ class ApiRequests {
             }
     }
 
+    fun findEmergencias(callback: (emergencias: List<Emergencia>?) -> Unit){
+        functions
+            .getHttpsCallable("getEmergenciasAbertas")
+            .call()
+            .continueWith { task ->
+                if (task.isSuccessful) {
+                    val result = task.result?.data as String
+                    Log.d("emergencias", result)
+                    callback(null)
+
+                } else {
+                    callback(null)
+                    Log.d("emergencias", "deu errado")
+                }
+            }
+    }
 }
