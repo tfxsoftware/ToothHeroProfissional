@@ -62,19 +62,30 @@ class ApiRequests {
             }
     }
 
-    fun findEmergencias(callback: (emergencias: List<Emergencia>?) -> Unit){
+    fun findEmergencias(callback: (emergencias: MutableList<Emergencia>?) -> Unit){
+        val lista: MutableList<Emergencia>
         functions
             .getHttpsCallable("getEmergenciasAbertas")
             .call()
             .continueWith { task ->
                 if (task.isSuccessful) {
-                    val result = task.result?.data as String
-                    Log.d("emergencias", result)
+                    val result = task.result?.data as List<*>
+
+                    /*for (i in result.indices){
+                        var value = result[i] as HashMap<*,*>
+                        val gson = Gson()
+                        val json = gson.toJson(value)
+                        val emergencia = gson.fromJson(json, Emergencia::class.java)
+                        lista.add(emergencia)
+                    }
+                    */
+
+                    Log.d("emergencias", result.toString())
                     callback(null)
 
                 } else {
                     callback(null)
-                    Log.d("emergencias", "deu errado")
+                    Log.d("emergencias", task.exception.toString())
                 }
             }
     }
