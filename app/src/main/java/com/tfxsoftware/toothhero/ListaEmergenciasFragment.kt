@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
+import androidx.recyclerview.widget.RecyclerView
+import com.tfxsoftware.recyclelist.EmergenciasAdapter
 
 
 class ListaEmergenciasFragment : Fragment() {
@@ -14,6 +14,7 @@ class ListaEmergenciasFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -28,6 +29,11 @@ class ListaEmergenciasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ApiRequests().findEmergencias {
+            if (it != null) {
+                val recyclerView = view.findViewById<RecyclerView>(R.id.recylerView)
+                recyclerView.adapter = EmergenciasAdapter(it)
+            }
         }
+
     }
 }

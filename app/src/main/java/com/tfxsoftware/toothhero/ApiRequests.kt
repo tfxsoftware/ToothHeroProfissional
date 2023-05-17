@@ -62,8 +62,8 @@ class ApiRequests {
             }
     }
 
-    fun findEmergencias(callback: (emergencias: MutableList<Emergencia>?) -> Unit){
-        val lista: MutableList<Emergencia>
+    fun findEmergencias(callback: (emergencias: MutableList<EmergenciaL>?) -> Unit){
+        val lista: MutableList<EmergenciaL> = mutableListOf<EmergenciaL>()
         functions
             .getHttpsCallable("getEmergenciasAbertas")
             .call()
@@ -71,18 +71,17 @@ class ApiRequests {
                 if (task.isSuccessful) {
                     val result = task.result?.data as List<*>
 
-                    /*for (i in result.indices){
-                        var value = result[i] as HashMap<*,*>
+                    for (i in result.indices){
+                        val value = result[i] as HashMap<*,*>
                         val gson = Gson()
                         val json = gson.toJson(value)
-                        val emergencia = gson.fromJson(json, Emergencia::class.java)
+                        val emergencia = gson.fromJson(json, EmergenciaL::class.java)
                         lista.add(emergencia)
                     }
-                    */
 
-                    Log.d("emergencias", result.toString())
-                    callback(null)
 
+                    Log.d("emergencias", lista.toString())
+                    callback(lista)
                 } else {
                     callback(null)
                     Log.d("emergencias", task.exception.toString())
