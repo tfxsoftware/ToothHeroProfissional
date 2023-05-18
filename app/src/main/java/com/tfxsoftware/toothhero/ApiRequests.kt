@@ -62,8 +62,8 @@ class ApiRequests {
             }
     }
 
-    fun findEmergencias(callback: (emergencias: MutableList<EmergenciaL>?) -> Unit){
-        val lista: MutableList<EmergenciaL> = mutableListOf<EmergenciaL>()
+    fun findEmergencias(callback: (emergencias: MutableList<Emergencia>?) -> Unit){
+        val lista: MutableList<Emergencia> = mutableListOf<Emergencia>()
         functions
             .getHttpsCallable("getEmergenciasAbertas")
             .call()
@@ -75,7 +75,7 @@ class ApiRequests {
                         val value = result[i] as HashMap<*,*>
                         val gson = Gson()
                         val json = gson.toJson(value)
-                        val emergencia = gson.fromJson(json, EmergenciaL::class.java)
+                        val emergencia = gson.fromJson(json, Emergencia::class.java)
                         lista.add(emergencia)
                     }
 

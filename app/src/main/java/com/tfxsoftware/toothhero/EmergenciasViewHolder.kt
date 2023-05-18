@@ -10,8 +10,9 @@ class EmergenciasViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     private val contactName: TextView = itemView.findViewById(R.id.emergencia_nome)
     private val contactNumber: TextView = itemView.findViewById(R.id.emergencia_data)
 
-    fun bind (emergenciaL: EmergenciaL){
-        contactName.text = emergenciaL.nome
-        contactNumber.text = emergenciaL.datahora
+    fun bind (emergencia: Emergencia, listener: (Emergencia) -> Unit){
+        itemView.setOnClickListener { listener(emergencia) }
+        contactName.text = emergencia.nome
+        contactNumber.text = emergencia.datahora
     }
 }

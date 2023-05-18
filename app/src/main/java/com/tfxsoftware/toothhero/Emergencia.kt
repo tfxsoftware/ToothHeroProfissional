@@ -11,7 +11,3 @@ data class Emergencia(val eid: String?, val nome: String?, val telefone: String?
 
 }
 
-
-data class EmergenciaL(val nome: String?, val telefone: String?, val fotos: String?,
-                      val datahora: String?, val status: String?)
-

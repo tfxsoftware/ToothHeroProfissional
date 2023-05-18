@@ -1,21 +1,20 @@
 package com.tfxsoftware.toothhero
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tfxsoftware.recyclelist.EmergenciasAdapter
+import com.tfxsoftware.toothhero.EmergenciasAdapter
 
 
-class ListaEmergenciasFragment : Fragment() {
+class ListaEmergenciasFragment : Fragment(){
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -31,9 +30,21 @@ class ListaEmergenciasFragment : Fragment() {
         ApiRequests().findEmergencias {
             if (it != null) {
                 val recyclerView = view.findViewById<RecyclerView>(R.id.recylerView)
-                recyclerView.adapter = EmergenciasAdapter(it)
+                recyclerView.adapter = EmergenciasAdapter(it){ emergencia ->
+                    val intent = Intent(requireContext(), EmergenciaActivity::class.java)
+                    intent.putExtra("eid", emergencia.eid.toString())
+                    intent.putExtra("nome", emergencia.nome.toString())
+                    intent.putExtra("telefone", emergencia.telefone.toString())
+                    intent.putExtra("datahora", emergencia.datahora.toString())
+                    intent.putExtra("fotos", emergencia.fotos.toString())
+                    intent.putExtra("status", emergencia.status.toString())
+                    startActivity(intent)
+                }
+
             }
         }
+
+
 
     }
 }
