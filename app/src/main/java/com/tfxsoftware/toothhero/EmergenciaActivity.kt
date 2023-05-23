@@ -62,30 +62,24 @@ class EmergenciaActivity : AppCompatActivity() {
 
 
         binding.bAceite.setOnClickListener {
-            val atendimento = Atendimento(LocalDateTime.now().format(formatter),
-                              emergencia.eid, firebaseAuth.currentUser?.uid, "Aceito")
-            ApiRequests().addNovoAtendimento(atendimento){success,_ ->
-                if(success){
-                    Toast.makeText(this, "Atendimento Aceito!", Toast.LENGTH_SHORT).show()
+            ApiRequests().getDentista(firebaseAuth.currentUser?.uid) {
+                val atendimento = Atendimento(it?.nome,
+                    LocalDateTime.now().format(formatter),
+                    emergencia.eid, firebaseAuth.currentUser?.uid, "Aceito"
+                )
+                ApiRequests().addNovoAtendimento(atendimento) { success, _ ->
+                    if (success) {
+                        Toast.makeText(this, "Atendimento Aceito!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Falha ao aceitar atendimento!", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
-                else{
-                    Toast.makeText(this, "Falha ao aceitar atendimento!", Toast.LENGTH_SHORT).show()
-                }
+                intent.removeExtra("emergencia")
+                finish()
             }
-            intent.removeExtra("emergencia")
-            finish()
         }
         binding.bRejeitar.setOnClickListener {
-            val atendimento = Atendimento(LocalDateTime.now().format(formatter),
-                emergencia.eid, firebaseAuth.currentUser?.uid, "Rejeitado")
-            ApiRequests().addNovoAtendimento(atendimento){success,_ ->
-                if(success){
-                    Toast.makeText(this, "Atendimento Rejeitado!", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    Toast.makeText(this, "Falha ao rejeitar atendimento", Toast.LENGTH_SHORT).show()
-                }
-            }
             intent.removeExtra("emergencia")
             finish()
         }

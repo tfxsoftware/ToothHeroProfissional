@@ -76,6 +76,7 @@ class ApiRequests {
                         val gson = Gson()
                         val json = gson.toJson(value)
                         val emergencia = gson.fromJson(json, Emergencia::class.java)
+                        Log.d("id", emergencia.toString())
                         lista.add(emergencia)
                     }
 
