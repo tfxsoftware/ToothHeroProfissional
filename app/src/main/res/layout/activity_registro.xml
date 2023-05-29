@@ -25,8 +25,8 @@
             android:layout_marginTop="25dp"
             android:src="@drawable/perfildentista" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLoginTexto"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddFoto"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

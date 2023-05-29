@@ -10,7 +10,7 @@ data class Dentista(
     var cro: String,
     var curriculo:String,
     var enderecos: MutableList<String>,
-    //var foto: String? = null,
+    var foto: String?
 
 ) {
     init{
@@ -23,7 +23,7 @@ data class Dentista(
         ) throw Exception ("Preencha todos campos")
         if (!this.cro.isDigitsOnly()) throw Exception("Cro Inválido")
         if (this.senha.length < 6) throw Exception ("Senha muito curta!")
-
+        if (this.foto == null) throw Exception ("Favor adicionar foto!")
 
 
     }

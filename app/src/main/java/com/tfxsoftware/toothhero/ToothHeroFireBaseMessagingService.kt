@@ -78,7 +78,7 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
         }
 
 
-        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_MUTABLE)
 
         val channelId = getString(R.string.default_notification_channel_id)
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
