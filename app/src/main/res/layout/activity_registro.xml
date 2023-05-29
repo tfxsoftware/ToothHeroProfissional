@@ -122,6 +122,7 @@
             android:padding="16dp"
             android:background="@android:color/background_light"
             android:hint="Digite sua senha"
+            android:inputType="textPassword"
             android:textColorHint="#999999"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -138,6 +139,7 @@
             android:padding="16dp"
             android:background="@android:color/background_light"
             android:hint="Digite novamente sua senha"
+            android:inputType="textPassword"
             android:textColorHint="#999999"/>
         <LinearLayout
             android:orientation="vertical"

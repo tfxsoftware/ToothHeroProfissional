@@ -109,12 +109,12 @@ class RegistroActivity : AppCompatActivity() {
                         binding.etCurriculo.text.toString(),
                         listaEndereco,
                         imageRef)
-                    apiRequests.addNovoDentista(dentista) { success, _ ->
+                    apiRequests.addNovoDentista(dentista) { success, error ->
                         if (success) {
                             Toast.makeText(this, "Dentista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
                             finish()
                         } else {
-                            Toast.makeText(this, "Erro ao cadastrar dentista!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, error , Toast.LENGTH_SHORT).show()
                         }
                     }
 
