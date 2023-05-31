@@ -14,4 +14,9 @@
         android:label="Lista"
         />
 
+    <fragment
+        android:id="@+id/reputacaoFragment"
+        android:name="com.tfxsoftware.toothhero.ListaAvaliacoesFragment"
+        android:label="Minha Reputação"
+        />
 </navigation>

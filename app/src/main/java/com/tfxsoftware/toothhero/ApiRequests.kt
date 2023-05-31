@@ -89,4 +89,31 @@ class ApiRequests {
                 }
             }
     }
+    fun findAvaliacoes(id: String?,callback: (avaliacoes: MutableList<Avaliacao>?) -> Unit){
+        val data = hashMapOf("id" to id)
+        val lista: MutableList<Avaliacao> = mutableListOf<Avaliacao>()
+        functions
+            .getHttpsCallable("getAvaliacoesByDentista")
+            .call(data)
+            .continueWith { task ->
+                if (task.isSuccessful) {
+                    val result = task.result?.data as List<*>
+
+                    for (i in result.indices){
+                        val value = result[i] as HashMap<*,*>
+                        val gson = Gson()
+                        val json = gson.toJson(value)
+                        val avaliacao = gson.fromJson(json, Avaliacao::class.java)
+                        lista.add(avaliacao)
+                    }
+
+
+                    Log.d("avaliacoes", lista.toString())
+                    callback(lista)
+                } else {
+                    callback(null)
+                    Log.d("avaliacoes", task.exception.toString())
+                }
+            }
+    }
 }

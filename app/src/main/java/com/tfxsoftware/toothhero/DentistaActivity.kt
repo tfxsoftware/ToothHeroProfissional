@@ -73,6 +73,11 @@ class DentistaActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.reputacaoFragment -> {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.reputacaoFragment)
+                    true
+                }
+
                 R.id.navigation_logout -> {
                     val dialog = AlertDialog.Builder(this)
                         .setTitle("Logout")

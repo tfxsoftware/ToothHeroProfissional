@@ -10,7 +10,8 @@ data class Dentista(
     var cro: String,
     var curriculo:String,
     var enderecos: MutableList<String>,
-    var foto: String?
+    var foto: String?,
+    var nota: Int
 
 ) {
     init{

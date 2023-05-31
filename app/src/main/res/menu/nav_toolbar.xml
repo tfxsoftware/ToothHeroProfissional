@@ -2,14 +2,25 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_user"
-        android:title="Home" />
+        android:title="Home"
+        />
     <item
         android:id="@+id/listaEmergenciasFragment"
         android:icon="@drawable/ic_list"
-        android:title="Lista de Emergencias" />
+        android:title="Lista de Emergencias"
+        />
+
+    <item
+        android:id="@+id/reputacaoFragment"
+        android:icon="@drawable/star"
+        android:title="Minha Reputação"
+        />
+
     <item
         android:id="@+id/navigation_logout"
         android:icon="@drawable/ic_logout"
-        android:title="Logout" />
+        android:title="Logout"
+        />
+
 
 </menu>

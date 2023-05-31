@@ -108,7 +108,7 @@ class RegistroActivity : AppCompatActivity() {
                         binding.etCRO.text.toString(),
                         binding.etCurriculo.text.toString(),
                         listaEndereco,
-                        imageRef)
+                        imageRef, 5)
                     apiRequests.addNovoDentista(dentista) { success, error ->
                         if (success) {
                             Toast.makeText(this, "Dentista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
