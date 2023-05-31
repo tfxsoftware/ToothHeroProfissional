@@ -5,6 +5,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -16,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToothHero"
         tools:targetApi="33">
+        <activity
+            android:name=".DisputaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_disputa"
+            android:theme="@style/Theme.ToothHero" />
         <activity
             android:name=".EmergenciaActivity"
             android:exported="false"
