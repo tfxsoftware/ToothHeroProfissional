@@ -1,229 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:padding="16dp"
-    android:background="@drawable/backgroud"
-    tools:context=".RegistroActivity"
-    android:scrollbars="vertical">
+    android:background="#FFFFFF">
 
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/Perfil"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:src="@drawable/perfildentista" />
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddFoto"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adicionar foto de perfil"
-            android:layout_gravity="center"
-            android:textSize="22sp"
-            android:layout_marginTop="5dp"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNomeCadastro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="NOME"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:padding="16dp"
-            android:hint="Digite seu nome"
-            android:textColorHint="#999999" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="E-MAIL"
-            android:textSize="22sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="25dp"/>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:padding="16dp"
-            android:hint="Digite seu e-mail"
-            android:textColorHint="#999999" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTelefone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="TELEFONE"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvNome"
-            android:background="@android:color/background_light"
-            android:padding="16dp"
-            android:hint="Digite seu telefone"
-            android:textColorHint="#999999" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="N° DA CRO"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etCRO"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:background="@android:color/background_light"
-            android:hint="Digite seu N°CRO"
-            android:textColorHint="#999999"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="SENHA"
-            android:textColor="@color/black"
-            android:textSize="22sp"/>
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/etSenha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:background="@android:color/background_light"
-            android:hint="Digite sua senha"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:drawablePadding="16dp"
+            android:hint="Senha"
+            android:drawableStart="@drawable/password"
             android:inputType="textPassword"
-            android:textColorHint="#999999"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="CONFIRMAR SENHA"
+            android:layout_marginTop="16dp"
             android:textColor="@color/black"
-            android:textSize="22sp"/>
+            android:textColorHint="@color/purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TvCro" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/etSenhaConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:background="@android:color/background_light"
-            android:hint="Digite novamente sua senha"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Confirmar senha"
             android:inputType="textPassword"
-            android:textColorHint="#999999"/>
+            android:drawableStart="@drawable/password"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etSenha" />
+
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/editTextContainer"
+            android:background="@drawable/edittext_background"
+            android:textColor="@color/black"
+            android:textColorHint="@color/purple"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/etSenhaConfirm"/>
+            app:layout_constraintTop_toBottomOf="@+id/etSenhaConfirm" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAdcEndereco"
-            android:layout_width="match_parent"
+            style="@android:style/Widget.Button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
             android:text="Adicionar endereço"
-            android:hint="Digite o endreço"
-            android:textColorHint="#999999"
-            android:layout_below="@+id/editTextContainer"
-            android:textSize="22sp"
-            android:layout_marginTop="25dp"
-            android:padding="16dp"
-            android:background="@android:color/background_light"
-            android:backgroundTint="@color/botao_escuro"/>
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnApagarCampo"
-            android:layout_width="match_parent"
+            style="@android:style/Widget.Button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextContainer"
-            android:layout_alignParentLeft="true"
-            android:layout_toEndOf="@id/btnAdcEndereco"
-            android:text="Apagar campo"
+            android:layout_margin="50dp"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:text="Apague até dois campos de endereços"
+            android:textSize="20sp"
             android:visibility="invisible"
-            android:textSize="22sp"
-            android:layout_marginTop="25dp"
-            android:padding="16dp"
-            android:backgroundTint="@color/botao_escuro"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAdcEndereco"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <TextView
             android:id="@+id/tvCurriculo"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnAdcEndereco"
-            android:textSize="22sp"
-            android:layout_marginTop="25dp"
-            android:text="Escreva um breve currículo com até 2.000 caractéres:"/>
+            android:text="Escreva um breve currículo com até 2.000 caracteres:"
+            android:textColor="@color/purple"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnApagarCampo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center" />
 
-
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etCurriculo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:layout_below="@+id/tvCurriculo"
-            android:background="@android:color/background_light"
-            android:padding="40dp"
-            android:hint="Digite seu currículo"/>
 
         <Switch
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="35dp"
             android:textSize="22sp"
-            android:text="Aceito ser um credenciado" />
+            android:text="Aceito ser um credenciado"
+            android:textColor="@color/purple"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/etCurriculo" />
 
+        <EditText
+            android:id="@+id/etCurriculo"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:layout_marginTop="15dp"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Digite uma breve apresentação"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurriculo" />
+
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="16dp"
+            android:drawableStart="@drawable/email"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/purple"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNome" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="163dp"
+            android:layout_height="197dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/top_tight" />
+
+        <ImageView
+            android:id="@+id/Perfil"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/fotoperfilteste"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddFoto"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="280dp"
+            android:text="Adicionar foto de perfil"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/social_button_background"
+            android:textColor="@color/purple"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/Perfil"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCriarConta"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/bottom_right" />
+
+        <TextView
+            android:id="@+id/TvCadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Cadastrar"
+            android:textColor="@color/purple"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/btnCriarConta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddFoto"
+            app:layout_constraintVertical_bias="0.051" />
+
+        <EditText
+            android:id="@+id/etNome"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:drawableStart="@drawable/ic_ficha"
+            android:hint="Nome Completo"
+            android:textColorHint="@color/purple"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TvCadastrar" />
+
+        <EditText
+            android:id="@+id/etTelefone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Telefone"
+            android:drawableStart="@drawable/ic_telefone"
+            android:textColorHint="@color/purple"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+        <EditText
+            android:id="@+id/TvCro"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Digite seu N° da CRO"
+            android:drawableStart="@drawable/ic_cro"
+            android:textColorHint="@color/purple"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etTelefone" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCriarConta"
-            android:layout_width="match_parent"
+            style="@android:style/Widget.Button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Criar conta"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/etCurriculo"
-            android:layout_marginTop="30dp"
-            android:padding="16dp"
-            android:textSize="22sp"
-            android:backgroundTint="@color/botao_escuro"/>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
+            android:layout_margin="50dp"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="Salvar Informações"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
 
-
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
