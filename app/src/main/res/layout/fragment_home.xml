@@ -1,114 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud"
-    android:padding="16dp"
-    tools:context=".HomeFragment">
+    android:background="@color/grey">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/Perfil"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="3dp"
-        android:src="@drawable/perfildentista" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvNomeHome"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Perfil"
-        android:layout_marginTop="210dp"
-        android:gravity="center"
-        android:text="Dr."
-        android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Perfil"
-        android:layout_marginTop="260dp"
-        android:layout_gravity="center_horizontal"
-        android:textSize="22sp"
-        android:text="Disponível" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAtendimentos"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="290dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="+500 Atendimentos"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/PlanoDeFundo"
+                    android:layout_width="match_parent"
+                    android:layout_height="330dp"
+                    android:background="@drawable/top_dashboard_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAvaliacoesU"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="279dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="4,2 Avaliações dos Usúarios"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+                    <ImageView
+                        android:id="@+id/enfeite"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/pic_background" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAnosPlataforma"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="290dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="2 Anos na Plataforma"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+                    <ImageView
+                        android:id="@+id/Perfil"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/enfeite"
+                        app:layout_constraintEnd_toEndOf="@+id/enfeite"
+                        app:layout_constraintHorizontal_bias="0.47"
+                        app:layout_constraintStart_toStartOf="@+id/enfeite"
+                        app:layout_constraintTop_toTopOf="@+id/enfeite"
+                        app:layout_constraintVertical_bias="0.588"
+                        android:mask="@drawable/circle_mask"
+                        app:srcCompat="@drawable/profile" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvNomeHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Dr° "
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/enfeite"
+                        app:layout_constraintStart_toStartOf="@+id/enfeite"
+                        app:layout_constraintTop_toBottomOf="@+id/enfeite" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCurriculo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvAnosPlataforma"
-        android:layout_marginTop="450dp"
-        android:text="CURRICULO"
-        android:textColor="@color/black"
-        android:textSize="22sp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etTxCurriculo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etTxCurriculo"
-        android:background="@android:color/background_light"
-        android:layout_marginTop="480dp"
-        android:padding="@dimen/text_margin"
-        android:hint="O atendimento de mais de 120 pacientes ortodônticos adolescentes ao longo da minha carreira ondotológica de cinco anos me ensinou muito sobre psicologia adolescente."
-        android:textColorHint="#999999" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/top_banner_background"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/PlanoDeFundo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/PlanoDeFundo">
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Status: "
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <Switch
+                            android:id="@+id/switch1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-27dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="OFF  " />
+
+                        <TextView
+                            android:id="@+id/textOff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="235dp"
+                            android:layout_marginTop="-27dp"
+                            android:text="ON"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="310dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/btn_main_background">
+
+                        <ImageView
+                            android:id="@+id/perfilzinho"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="-120dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.466"
+                            app:srcCompat="@drawable/ic_ficha" />
+
+                        <TextView
+                            android:id="@+id/textAtendimento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginTop="-240dp"
+                            android:text="Atendimento Aberto"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/perfilzinho"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginEnd="0dp"
+                            android:background="@color/purple"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/etNome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-120dp"
+                            android:text="Nome do responsável: "
+                            android:textColor="#222252"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.463"
+                            tools:layout_editor_absoluteX="34dp" />
+
+                        <TextView
+                            android:id="@+id/etNomeCliente"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-120dp"
+                            android:text="Renata "
+                            android:textColor="#222252"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.463"
+                            tools:layout_editor_absoluteX="219dp" />
+
+                        <ImageView
+                            android:id="@+id/icTelefone"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="-70dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.466"
+                            app:srcCompat="@drawable/ic_telefone" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAvaliacoes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="640dp"
-        android:textSize="18sp"
-        android:text="AVALIAÇÕES DOS USÚARIOS"
-        android:backgroundTint="@color/botao_escuro" />
+                        <TextView
+                            android:id="@+id/etTelefone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-70dp"
+                            android:text="Telefone do responsável: "
+                            android:textColor="#222252"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.463"
+                            tools:layout_editor_absoluteX="34dp" />
+
+                        <TextView
+                            android:id="@+id/eTelefoneCliente"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-70dp"
+                            android:text=" 19984436637"
+                            android:textColor="#222252"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.463"
+                            tools:layout_editor_absoluteX="242dp" />
+
+                        <ImageView
+                            android:id="@+id/icEndereco"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="-20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.466"
+                            app:srcCompat="@drawable/ic_endereco" />
 
 
-</FrameLayout>
+                        <TextView
+                            android:id="@+id/etLocalizaçao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-20dp"
+                            android:text="Localização:"
+                            android:textColor="#222252"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.463"
+                            tools:layout_editor_absoluteX="34dp" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
