@@ -105,7 +105,7 @@ class RegistroActivity : AppCompatActivity() {
                         binding.etTelefone.text.toString(),
                         binding.etEmail.text.toString(),
                         binding.etSenha.text.toString(),
-                        binding.etCRO.text.toString(),
+                        binding.etCro.text.toString(),
                         binding.etCurriculo.text.toString(),
                         listaEndereco,
                         imageRef, 5)

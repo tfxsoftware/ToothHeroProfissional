@@ -26,7 +26,7 @@
             android:textColorHint="@color/purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TvCro" />
+            app:layout_constraintTop_toBottomOf="@+id/etCro" />
 
         <EditText
             android:id="@+id/etSenhaConfirm"
@@ -69,7 +69,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/button_background"
             android:text="Adicionar endereço"
-            android:textColor="@color/white"
+            android:textColor="@color/purple"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/editTextContainer"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="50dp"
             android:background="@drawable/button_background"
-            android:textColor="@color/white"
+            android:textColor="@color/purple"
             android:text="Apague até dois campos de endereços"
             android:textSize="20sp"
             android:visibility="invisible"
@@ -260,7 +260,7 @@
             app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
         <EditText
-            android:id="@+id/TvCro"
+            android:id="@+id/etCro"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
