@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +23,8 @@
             android:id="@+id/tvTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="-139dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="-100dp"
             android:text="Nova\n Emergência"
             android:textColor="@color/purple"
             android:textSize="37sp"
@@ -38,7 +38,7 @@
             android:id="@+id/tvInform"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="Informação"
             android:textColor="@color/purple"
             android:textSize="25sp"
@@ -49,7 +49,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/CaixaDeTexto"
             android:layout_width="380dp"
-            android:layout_height="410dp"
+            android:layout_height="490dp"
             android:background="@drawable/btn_main_background"
             app:layout_constraintTop_toBottomOf="@+id/tvInform"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,26 +59,26 @@
                 android:id="@+id/tvNome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="-350dp"
                 android:text="   Nome: "
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="-120dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <TextView
                 android:id="@+id/tvPaciente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="-350dp"
+                android:layout_marginTop="10dp"
                 android:text="Renata"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvNome"
                 app:layout_constraintStart_toEndOf="@+id/tvNome"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,7 +86,7 @@
                 android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -95,26 +95,26 @@
                 android:id="@+id/tvDataHora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="-250dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="-35dp"
                 android:text="   Data e Hora: "
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/CaixaDeTexto"
+                app:layout_constraintTop_toBottomOf="@id/view2" />
 
             <TextView
                 android:id="@+id/tvData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="-250dp"
+                android:layout_marginTop="53dp"
                 android:text="19/10/2020 21:23"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvDataHora"
                 app:layout_constraintStart_toEndOf="@+id/tvDataHora"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,7 +122,7 @@
                 android:id="@+id/view2"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="105dp"
+                android:layout_marginTop="85dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -131,21 +131,22 @@
                 android:id="@+id/tvTelefone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="-150dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
                 android:text="   Telefone: "
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/CaixaDeTexto"
+                app:layout_constraintTop_toBottomOf="@id/view2" />
+
 
             <TextView
                 android:id="@+id/tvNumero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="-150dp"
+                android:layout_marginTop="-270dp"
                 android:text="5519974383388"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -153,12 +154,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvDataHora"
                 app:layout_constraintTop_toTopOf="parent" />
-
             <View
                 android:id="@+id/view3"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="155dp"
+                android:layout_marginTop="125dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -166,7 +166,8 @@
                 android:id="@+id/tvFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="4dp"
                 android:text="    Foto:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -175,9 +176,10 @@
                 app:layout_constraintStart_toStartOf="@+id/CaixaDeTexto" />
             <ImageView
                 android:id="@+id/foto2"
-                android:layout_width="150dp"
+                android:layout_width="110dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="-150dp"
+
                 app:layout_constraintTop_toBottomOf="@+id/tvFoto"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,11 +188,39 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:srcCompat="@drawable/fotoboca2" />
 
+            <ImageView
+                android:id="@+id/foto3"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="-150dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvFoto"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:srcCompat="@drawable/fotoboca2" />
+
+            <ImageView
+                android:id="@+id/foto1"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="-150dp"
+                android:layout_marginStart="230dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvFoto"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:srcCompat="@drawable/fotoboca2" />
+
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bAceite"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="100dp"
                 android:layout_marginStart="-190dp"
                 android:text="ACEITAR"
                 android:textSize="18sp"
@@ -206,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bAceite"
                 android:layout_marginStart="190dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="100dp"
                 android:textSize="18sp"
                 android:text="REJEITAR"
                 android:textColor="@android:color/white"
