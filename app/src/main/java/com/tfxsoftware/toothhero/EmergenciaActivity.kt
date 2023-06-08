@@ -105,7 +105,7 @@ class EmergenciaActivity : AppCompatActivity() {
                 val atendimento = Atendimento(it?.nome,
                     LocalDateTime.now().format(formatter),
                     emergencia.eid, firebaseAuth.currentUser?.uid, "Aceito",
-                    fcmtoken
+                    fcmtoken, emergencia.telefone
                 )
                 ApiRequests().addNovoAtendimento(atendimento) { success, _ ->
                     if (success) {

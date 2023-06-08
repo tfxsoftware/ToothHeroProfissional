@@ -7,10 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.widget.AppCompatButton
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
@@ -37,6 +35,11 @@ class HomeFragment : Fragment() {
         val subscribeSwitch: Switch = view.findViewById(R.id.switch1)
         val nomeDentista = view.findViewById<TextView>(R.id.tvNomeHome)
         val fotoDentista = view.findViewById<ImageView>(R.id.Perfil)
+        val telefoneCliente = view.findViewById<TextView>(R.id.eTelefoneCliente)
+        val nomeCliente = view.findViewById<TextView>(R.id.etNomeCliente)
+        val textAtendimento = view.findViewById<TextView>(R.id.textAtendimento)
+        val botaoEncerra = view.findViewById<AppCompatButton>(R.id.btnFinalizarAtendimento)
+        botaoEncerra.visibility = View.GONE
 
         if (dentista == null) {
             ApiRequests().getDentista(auth.uid) {
@@ -57,6 +60,16 @@ class HomeFragment : Fragment() {
                         Log.d("image", "erro ao carregar imagem, $exception")
                     }
 
+            }
+        }
+
+        ApiRequests().getAtendimentoEmAndamento(auth.uid){
+            val atendimento = it
+            if (atendimento != null){
+                textAtendimento.text = "Em atendimento"
+                telefoneCliente.text = atendimento.telefone
+                nomeCliente.text = atendimento.nome
+                botaoEncerra.visibility = View.VISIBLE
             }
         }
         subscribeSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -82,6 +95,21 @@ class HomeFragment : Fragment() {
                     }
             }
         }
+
+        botaoEncerra.setOnClickListener {
+            ApiRequests().fecharAtendimento(auth.uid){success ->
+                if (success){
+                    Toast.makeText(this.context, "Atendimento Encerrado!", Toast.LENGTH_SHORT).show()
+                    textAtendimento.text = "Sem atendimento ativo"
+                    telefoneCliente.text = ""
+                    nomeCliente.text = ""
+                    botaoEncerra.visibility = View.GONE
+                }
+                else{
+                    Toast.makeText(this.context, "Erro ao finalizar atendimento!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
 }
 

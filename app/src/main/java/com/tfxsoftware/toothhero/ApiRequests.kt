@@ -116,4 +116,37 @@ class ApiRequests {
                 }
             }
     }
+
+    fun getAtendimentoEmAndamento(id: String?, callback: (atendimento: Atendimento?) -> Unit ){
+        val data = hashMapOf("id" to id)
+        functions
+            .getHttpsCallable("getAtendimentoByDentista")
+            .call(data)
+            .continueWith { task ->
+                if (task.isSuccessful) {
+                    val result = task.result?.data as HashMap<*, *>?
+                    val gson = Gson()
+                    val json = gson.toJson(result)
+                    val atendimento = gson.fromJson(json, Atendimento::class.java)
+                    callback(atendimento)
+                } else {
+                    callback(null)
+                }
+            }
+    }
+
+    fun fecharAtendimento(id: String?, callback: (success:Boolean) -> Unit ){
+        val data = hashMapOf("id" to id)
+        functions
+            .getHttpsCallable("closeAtendimento")
+            .call(data)
+            .continueWith { task ->
+                if (task.isSuccessful) {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            }
+    }
+
 }
