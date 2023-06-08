@@ -86,7 +86,7 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle(getString(R.string.notification_title))
+            .setContentTitle("Atendimento")
             .setContentText(messageBody)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
