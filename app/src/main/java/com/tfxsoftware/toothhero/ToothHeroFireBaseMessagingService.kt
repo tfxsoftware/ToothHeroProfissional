@@ -31,21 +31,32 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
             Log.d(TAG, "Message Notification Body: ${it.body}")
             it.body?.let { body ->
                 remoteMessage.data.let { data ->
-                    val emergencia = Emergencia(data["eid"],
-                                                data["nome"],
-                                                data["telefone"],
-                                                data["fotos"],
-                                                data["datahora"],
-                                                data["status"])
-                    Log.d(TAG, emergencia.toString())
-                    sendNotification(body, emergencia)
+                    val title = it.title // Get the title of the notification
+
+                    if (title == "Atendimento") {
+                        // Call a different method for handling status updates
+                        sendAtendimentoNotification(body)
+                    } else {
+                        val emergencia = Emergencia(
+                            data["eid"],
+                            data["nome"],
+                            data["telefone"],
+                            data["fotoambos"],
+                            data["fotocrianca"],
+                            data["fotodoc"],
+                            data["datahora"],
+                            data["status"]
+                        )
+                        Log.d(TAG, emergencia.toString())
+                        sendEmergenciaNotification(body, emergencia)
+                    }
                 }
             }
         }
     }
-    // [END receive_message]
 
-    // [START on_new_token]
+
+
 
     override fun onNewToken(token: String) {
         Log.d(TAG, "Refreshed token: $token")
@@ -64,7 +75,38 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
     }
 
 
-    private fun sendNotification(messageBody: String, emergencia: Emergencia) {
+    private fun sendAtendimentoNotification(messageBody: String){
+        val intent = Intent(this, DentistaActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            action = "DentistaActivity"}
+
+        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_MUTABLE)
+
+        val channelId = getString(R.string.default_notification_channel_id)
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setContentTitle(getString(R.string.notification_title))
+            .setContentText(messageBody)
+            .setAutoCancel(true)
+            .setSound(defaultSoundUri)
+            .setContentIntent(pendingIntent)
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Since android Oreo notification channel is needed.
+
+        val channel = NotificationChannel(
+            channelId,
+            getString(R.string.default_notification_channel_name),
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
+        notificationManager.createNotificationChannel(channel)
+
+        notificationManager.notify(99, notificationBuilder.build())
+    }
+
+    private fun sendEmergenciaNotification(messageBody: String, emergencia: Emergencia) {
 
         val intent = Intent(this, EmergenciaActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -73,7 +115,9 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
             putExtra("nome", emergencia.nome.toString())
             putExtra("telefone", emergencia.telefone.toString())
             putExtra("datahora", emergencia.datahora.toString())
-            putExtra("fotos", emergencia.fotos.toString())
+            putExtra("fotoambos", emergencia.fotoambos.toString())
+            putExtra("fotocrianca", emergencia.fotocrianca.toString())
+            putExtra("fotodoc", emergencia.fotodoc.toString())
             putExtra("status", emergencia.status.toString())
         }
 

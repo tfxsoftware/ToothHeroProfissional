@@ -36,7 +36,9 @@ class ListaEmergenciasFragment : Fragment(){
                     intent.putExtra("nome", emergencia.nome.toString())
                     intent.putExtra("telefone", emergencia.telefone.toString())
                     intent.putExtra("datahora", emergencia.datahora.toString())
-                    intent.putExtra("fotos", emergencia.fotos.toString())
+                    intent.putExtra("fotoambos", emergencia.fotoambos.toString())
+                    intent.putExtra("fotocrianca", emergencia.fotocrianca.toString())
+                    intent.putExtra("fotodoc", emergencia.fotodoc.toString())
                     intent.putExtra("status", emergencia.status.toString())
                     startActivity(intent)
                 }
