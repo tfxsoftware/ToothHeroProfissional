@@ -4,8 +4,8 @@
 
     <!-- Gradiente com tons de azul -->
     <gradient
-        android:startColor="#D7E6FF"
-        android:endColor="#37E1FF"
+        android:startColor="@color/grey"
+        android:endColor="@color/grey"
         android:angle="135" />
 
 
