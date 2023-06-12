@@ -1,6 +1,11 @@
 package com.tfxsoftware.toothhero
 
-import android.media.Image
+
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,9 +14,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.ktx.storage
@@ -21,6 +36,9 @@ class HomeFragment : Fragment() {
     private val messaging = FirebaseMessaging.getInstance()
     private val auth = FirebaseAuth.getInstance()
     private var dentista: Dentista? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var currentLatLng: LatLng? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +57,25 @@ class HomeFragment : Fragment() {
         val nomeCliente = view.findViewById<TextView>(R.id.etNomeCliente)
         val textAtendimento = view.findViewById<TextView>(R.id.textAtendimento)
         val botaoEncerra = view.findViewById<AppCompatButton>(R.id.btnFinalizarAtendimento)
+
+
         botaoEncerra.visibility = View.GONE
+
+        if (hasLocationPermission()) {
+
+        } else {
+            requestLocationPermission()
+        }
+        val mapFragment = childFragmentManager.findFragmentById(
+            R.id.mapView
+        ) as? SupportMapFragment
+        mapFragment?.getMapAsync { googleMap ->
+            googleMap.addMarker(
+                MarkerOptions().title("Minha localização").position(LatLng(1.0, 1.0))
+            )
+
+        }
+
 
         if (dentista == null) {
             ApiRequests().getDentista(auth.uid) {
@@ -110,6 +146,60 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+    private fun hasLocationPermission(): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            requireContext(),
+            ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(super.requireActivity(),
+            arrayOf(
+                ACCESS_FINE_LOCATION,
+                ACCESS_COARSE_LOCATION
+            ),
+            LOCATION_PERMISSION_REQUEST_CODE
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            } else {
+                // Permission denied, handle accordingly
+            }
+        }
+    }
+
+    private fun getCurrentLocation(callback:(success:Boolean)->Unit) {
+        try {
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    location?.let {
+                        currentLatLng = LatLng(location.latitude, location.longitude)
+                        callback(true)
+
+                    }
+                }
+                } catch (e: SecurityException){
+                Toast.makeText(
+                    this.context,
+                    "Por favor permita uso da locaizao",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 123
     }
 }
 
