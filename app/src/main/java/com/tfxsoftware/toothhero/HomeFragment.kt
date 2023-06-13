@@ -1,9 +1,7 @@
 package com.tfxsoftware.toothhero
 
-
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -22,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -31,8 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.ktx.storage
 
-
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), OnMapReadyCallback {
     private val messaging = FirebaseMessaging.getInstance()
     private val auth = FirebaseAuth.getInstance()
     private var dentista: Dentista? = null
@@ -40,6 +36,25 @@ class HomeFragment : Fragment() {
     private var currentLatLng: LatLng? = null
 
 
+    override fun onMapReady(map: GoogleMap) {
+        Log.d("localizacao", "teste")
+        try{
+            fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                location?.let {
+                    currentLatLng = LatLng(location.latitude, location.longitude)
+                    Log.d("localizacao", currentLatLng.toString())
+                    map.addMarker(
+                        MarkerOptions().title("Minha localização").position(currentLatLng!!)
+                    )
+                    map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng!!))
+                }
+            }
+        } catch(e: SecurityException){
+            requestLocationPermission()
+            Log.d("localizacao", "deu erro")
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,24 +72,13 @@ class HomeFragment : Fragment() {
         val nomeCliente = view.findViewById<TextView>(R.id.etNomeCliente)
         val textAtendimento = view.findViewById<TextView>(R.id.textAtendimento)
         val botaoEncerra = view.findViewById<AppCompatButton>(R.id.btnFinalizarAtendimento)
-
-
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         botaoEncerra.visibility = View.GONE
+        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
 
-        if (hasLocationPermission()) {
 
-        } else {
-            requestLocationPermission()
-        }
-        val mapFragment = childFragmentManager.findFragmentById(
-            R.id.mapView
-        ) as? SupportMapFragment
-        mapFragment?.getMapAsync { googleMap ->
-            googleMap.addMarker(
-                MarkerOptions().title("Minha localização").position(LatLng(1.0, 1.0))
-            )
 
-        }
 
 
         if (dentista == null) {
@@ -95,7 +99,6 @@ class HomeFragment : Fragment() {
                     .addOnFailureListener { exception ->
                         Log.d("image", "erro ao carregar imagem, $exception")
                     }
-
             }
         }
 
@@ -108,6 +111,7 @@ class HomeFragment : Fragment() {
                 botaoEncerra.visibility = View.VISIBLE
             }
         }
+
         subscribeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Subscribe the user to the topic
@@ -147,6 +151,7 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
     private fun hasLocationPermission(): Boolean {
         return ActivityCompat.checkSelfPermission(
             requireContext(),
@@ -171,35 +176,14 @@ class HomeFragment : Fragment() {
     ) {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
+                // Permission granted, handle accordingly
             } else {
                 // Permission denied, handle accordingly
             }
         }
     }
 
-    private fun getCurrentLocation(callback:(success:Boolean)->Unit) {
-        try {
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    location?.let {
-                        currentLatLng = LatLng(location.latitude, location.longitude)
-                        callback(true)
-
-                    }
-                }
-                } catch (e: SecurityException){
-                Toast.makeText(
-                    this.context,
-                    "Por favor permita uso da locaizao",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-    }
-
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 123
     }
 }
-
