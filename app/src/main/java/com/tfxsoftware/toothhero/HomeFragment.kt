@@ -35,7 +35,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var currentLatLng: LatLng? = null
 
-
+    //
     override fun onMapReady(map: GoogleMap) {
         Log.d("localizacao", "teste")
         try{
