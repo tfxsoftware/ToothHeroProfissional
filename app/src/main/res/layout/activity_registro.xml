@@ -69,7 +69,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/button_background"
             android:text="Adicionar endereço"
-            android:textColor="@color/purple"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/editTextContainer"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="50dp"
             android:background="@drawable/button_background"
-            android:textColor="@color/purple"
+            android:textColor="@color/white"
             android:text="Apague até dois campos de endereços"
             android:textSize="20sp"
             android:visibility="invisible"
@@ -189,6 +189,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/social_button_background"
             android:textColor="@color/purple"
+            android:textSize="15dp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/Perfil"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -216,10 +217,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/btnCriarConta"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAddFoto"
-            app:layout_constraintVertical_bias="0.051" />
+            app:layout_constraintVertical_bias="0.01" />
 
         <EditText
             android:id="@+id/etNome"

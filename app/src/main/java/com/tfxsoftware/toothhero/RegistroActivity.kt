@@ -19,8 +19,13 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.FirebaseStorage
 import android.Manifest
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.TextWatcher
+import android.text.style.ForegroundColorSpan
 import android.util.Log
-
 import com.tfxsoftware.toothhero.databinding.ActivityRegistroBinding
 import okio.IOException
 import java.io.File
@@ -68,6 +73,23 @@ class RegistroActivity : AppCompatActivity() {
             newEditText.id = View.generateViewId()
             newEditText.hint = "Endereço"
             newEditText.inputType = InputType.TYPE_CLASS_TEXT
+            newEditText.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    newEditText.setTextColor(Color.BLACK)
+                }
+                override fun afterTextChanged(s: Editable?) {}
+            })
+
+            val hint = "Endereço"
+            val spannableString = SpannableString(hint)
+            spannableString.setSpan(
+                ForegroundColorSpan(Color.BLACK),
+                0,
+                hint.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            newEditText.hint = spannableString
 
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -81,7 +103,6 @@ class RegistroActivity : AppCompatActivity() {
                 binding.btnAdcEndereco.setOnClickListener(null)
                 Toast.makeText(this, "Permitido até 3 endereços", Toast.LENGTH_SHORT).show()
             }
-
         }
         binding.btnApagarCampo.setOnClickListener {
             if(binding.editTextContainer.childCount!=0) {
@@ -121,8 +142,6 @@ class RegistroActivity : AppCompatActivity() {
                 } catch(e: Exception){
                     Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                 }
-
-
             }
         }
     }
@@ -182,12 +201,3 @@ class RegistroActivity : AppCompatActivity() {
         return null
     }
 }
-
-
-
-
-
-
-
-
-
