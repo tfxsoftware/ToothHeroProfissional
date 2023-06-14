@@ -21,12 +21,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="9dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
                 app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/fotointro" />
+                app:srcCompat="@drawable/fotointroo" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="55dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="9dp"
                 android:text="Um aplicativo feito para atender suas emergências sempre que quiser!"
                 android:textColor="@color/purple_200"
                 android:textSize="20sp"
