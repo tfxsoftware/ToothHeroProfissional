@@ -1,28 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_width="380dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/top_banner_background">
 
     <TextView
-        android:id="@+id/avaliacao_comentario"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/avaliacao_nota"
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/nota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nota:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="80dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/nome"
+        app:layout_constraintBottom_toBottomOf="@id/nome"/>
+
+
+    <TextView
+        android:id="@+id/comentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comentário:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome" />
+
+    <TextView
+        android:id="@+id/avaliacao_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="tudo"
+        app:layout_constraintStart_toEndOf="@id/nome"
+        app:layout_constraintTop_toTopOf="@id/nome"
+        app:layout_constraintBottom_toBottomOf="@id/nome"/>
 
     <TextView
         android:id="@+id/avaliacao_nota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginStart="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/avaliacao_comentario"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="tudo"
+        app:layout_constraintStart_toEndOf="@id/nota"
+        app:layout_constraintTop_toTopOf="@id/nome"
+        app:layout_constraintBottom_toBottomOf="@id/nome"/>
+
+    <TextView
+        android:id="@+id/avaliacao_comentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Comentario aqui"
+        app:layout_constraintStart_toEndOf="@+id/comentario"
+        app:layout_constraintTop_toTopOf="@+id/comentario"
+        app:layout_constraintBottom_toBottomOf="@+id/comentario" />
+
+    <Button
+        android:id="@+id/btnreportar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Reportar Comentário"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avaliacao_comentario"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
