@@ -1,65 +1,66 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
-    android:layout_width="380dp"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="12dp"
-    android:background="@drawable/top_banner_background">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="150dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_width="match_parent"
+    android:background="@drawable/btn_main_background">
 
     <TextView
         android:id="@+id/nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome:"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Nome:"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/distancia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Distancia:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Distância:"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/emergencia_nome"
-        app:layout_constraintBottom_toBottomOf="@id/nome"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data"
+        app:layout_constraintVertical_bias="0.111" />
+
     <TextView
         android:id="@+id/DistanciaKm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="16"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="12dp"
+        android:text="  KM"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/distancia"
-        app:layout_constraintBottom_toBottomOf="@id/nome"/>
-
-    <TextView
-        android:id="@+id/Km"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="km"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/DistanciaKm"
-        app:layout_constraintBottom_toBottomOf="@id/nome"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toEndOf="@+id/distancia"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
 
     <TextView
         android:id="@+id/data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data:"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Data:"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,37 +70,30 @@
         android:id="@+id/emergencia_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:text="nome do responsável"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="tudo"
-        app:layout_constraintStart_toEndOf="@id/nome"
-        app:layout_constraintTop_toTopOf="@id/nome"
-        app:layout_constraintBottom_toBottomOf="@id/nome"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/nome"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/emergencia_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="data e hora da chamada"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="oiii"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/data"
-        app:layout_constraintTop_toTopOf="@+id/data"
-        app:layout_constraintBottom_toBottomOf="@+id/data" />
-
-    <Button
-        android:id="@+id/buttonVizualizar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:textColor="@color/white"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:text="Vizualizar Emergência"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/data"/>
+        app:layout_constraintTop_toBottomOf="@+id/emergencia_nome"
+        app:layout_constraintVertical_bias="0.046" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
