@@ -27,7 +27,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/PlanoDeFundo"
                     android:layout_width="match_parent"
-                    android:layout_height="290dp"
+                    android:layout_height="240dp"
                     android:background="@drawable/top_dashboard_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
                         android:id="@+id/enfeite"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="9dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -94,9 +94,9 @@
                             android:id="@+id/textStatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="60dp"
+                            android:layout_marginStart="25dp"
                             android:layout_marginTop="15dp"
-                            android:text="Status: "
+                            android:text="STATUS: "
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -110,7 +110,7 @@
                             android:layout_marginTop="-35dp"
                             android:layout_marginStart="20dp"
                             android:textStyle="bold"
-                            android:textSize="18dp"
+                            android:textSize="20dp"
                             android:textColor="@color/black"
                             android:text="OFF   " />
 
@@ -146,7 +146,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
-                        android:layout_height="370dp"
+                        android:layout_height="650dp"
                         android:layout_marginStart="8dp"
                         android:layout_weight="0.5"
                         android:background="@drawable/btn_main_background">
@@ -155,27 +155,31 @@
                             android:id="@+id/perfilzinho"
                             android:layout_width="23dp"
                             android:layout_height="23dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="-120dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="58dp"
+                            android:layout_marginEnd="4dp"
+                            app:layout_constraintEnd_toStartOf="@+id/etNome"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.466"
                             app:srcCompat="@drawable/ic_ficha" />
 
                         <TextView
                             android:id="@+id/textAtendimento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="35dp"
+                            android:layout_marginStart="56dp"
                             android:layout_marginTop="-240dp"
                             android:text="Sem atendimento ativo"
                             android:textColor="@color/black"
                             android:textSize="25sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/perfilzinho"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.137"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.291" />
 
                         <View
                             android:id="@+id/view"
@@ -192,8 +196,8 @@
                             android:id="@+id/etNome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
                             android:layout_marginStart="35dp"
+                            android:layout_marginTop="15dp"
                             android:text="Nome do responsável: "
                             android:textColor="#222252"
                             android:textSize="18sp"
@@ -219,22 +223,21 @@
                             android:id="@+id/icTelefone"
                             android:layout_width="23dp"
                             android:layout_height="23dp"
-                            android:layout_marginStart="4dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="-70dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.466"
+                            app:layout_constraintVertical_bias="0.226"
                             app:srcCompat="@drawable/ic_telefone" />
-
 
                         <TextView
                             android:id="@+id/etTelefone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Telefone do responsável: "
-                            android:layout_marginTop="5dp"
                             android:layout_marginStart="28dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Telefone do responsável: "
                             android:textColor="#222252"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -246,8 +249,8 @@
                             android:id="@+id/eTelefoneCliente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:layout_marginStart="200dp"
+                            android:layout_marginTop="5dp"
                             android:text=""
                             android:textColor="#222252"
                             android:textSize="18sp"
@@ -260,21 +263,20 @@
                             android:id="@+id/icEndereco"
                             android:layout_width="23dp"
                             android:layout_height="23dp"
-                            android:layout_marginStart="4dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="-20dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.466"
+                            app:layout_constraintVertical_bias="0.213"
                             app:srcCompat="@drawable/ic_endereco" />
-
 
                         <TextView
                             android:id="@+id/etLocalizaçao"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:layout_marginStart="28dp"
+                            android:layout_marginTop="5dp"
                             android:text="Localização:"
                             android:textColor="#222252"
                             android:textSize="18sp"
@@ -288,7 +290,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="32dp"
-                            android:layout_marginTop="136dp"
+                            android:layout_marginTop="1dp"
                             android:background="@drawable/button_background"
                             android:text="Finalizar Atendimento"
                             android:textColor="@color/white"
@@ -296,21 +298,21 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.421"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/etLocalizaçao" />
+                            app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
 
                         <fragment
-                            class="com.google.android.gms.maps.SupportMapFragment"
                             android:id="@+id/mapView"
-                            android:layout_width="130dp"
-                            android:layout_height="105dp"
-                            android:layout_marginStart="108dp"
-                            android:layout_marginEnd="146dp"
+                            class="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="350dp"
+                            android:layout_height="350dp"
                             android:layout_marginBottom="6dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.421"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/btnFinalizarAtendimento" />
+                            app:layout_constraintTop_toBottomOf="@+id/etLocalizaçao"
+                            app:layout_constraintVertical_bias="0.142" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
