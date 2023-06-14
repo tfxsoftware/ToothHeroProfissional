@@ -149,4 +149,18 @@ class ApiRequests {
             }
     }
 
+    fun addNovaDisputa(disputa: Disputa, callback: (success: Boolean) -> Unit){
+        val json = Gson().toJson(disputa)
+        val jsonObject = JSONObject(json)
+
+        val addData = functions.getHttpsCallable("addNewDisputa")
+        addData.call(jsonObject)
+            .addOnSuccessListener {
+                callback(true)
+            }
+            .addOnFailureListener { _ ->
+                callback(false)
+            }
+    }
+
 }
