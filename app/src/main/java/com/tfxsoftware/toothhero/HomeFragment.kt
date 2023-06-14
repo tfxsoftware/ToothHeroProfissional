@@ -48,7 +48,16 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     map.addMarker(
                         MarkerOptions().title("Minha localização").position(currentLatLng!!)
                     )
+                    ApiRequests().getAtendimentoEmAndamento(auth.uid){
+                        val atendimento = it
+                        if (atendimento != null){
+                            map.addMarker(
+                                MarkerOptions().position(LatLng(atendimento.latitude!!, atendimento.longitude!!)).title("Atendimento")
+                            )
 
+                        }
+                    }
+                    map.animateCamera(CameraUpdateFactory.zoomIn())
                     map.animateCamera(CameraUpdateFactory.zoomIn())
                     map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng!!))
 
@@ -114,9 +123,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                 telefoneCliente.text = atendimento.telefone
                 nomeCliente.text = atendimento.nome
                 botaoEncerra.visibility = View.VISIBLE
-                myMap.addMarker(
-                    MarkerOptions().position(LatLng(atendimento.latitude!!, atendimento.longitude!!)).title("Atendimento")
-                )
 
             }
         }
