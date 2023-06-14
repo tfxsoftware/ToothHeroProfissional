@@ -40,6 +40,8 @@ class ListaEmergenciasFragment : Fragment(){
                     intent.putExtra("fotocrianca", emergencia.fotocrianca.toString())
                     intent.putExtra("fotodoc", emergencia.fotodoc.toString())
                     intent.putExtra("status", emergencia.status.toString())
+                    intent.putExtra("latitude", emergencia.latitude)
+                    intent.putExtra("longitude", emergencia.longitude)
                     startActivity(intent)
                 }
 

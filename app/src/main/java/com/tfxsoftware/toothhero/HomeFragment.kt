@@ -34,10 +34,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private var dentista: Dentista? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var currentLatLng: LatLng? = null
+    private lateinit var myMap: GoogleMap
 
     //
     override fun onMapReady(map: GoogleMap) {
-        Log.d("localizacao", "teste")
+        myMap = map
         try{
             fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
@@ -113,6 +114,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                 telefoneCliente.text = atendimento.telefone
                 nomeCliente.text = atendimento.nome
                 botaoEncerra.visibility = View.VISIBLE
+                myMap.addMarker(
+                    MarkerOptions().position(LatLng(atendimento.latitude!!, atendimento.longitude!!)).title("Atendimento")
+                )
+
             }
         }
 

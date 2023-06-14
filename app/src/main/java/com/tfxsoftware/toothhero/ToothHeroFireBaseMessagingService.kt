@@ -45,7 +45,9 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
                             data["fotocrianca"],
                             data["fotodoc"],
                             data["datahora"],
-                            data["status"]
+                            data["status"],
+                            data["latitude"]!!.toDouble(),
+                            data["longitude"]!!.toDouble()
                         )
                         Log.d(TAG, emergencia.toString())
                         sendEmergenciaNotification(body, emergencia)
@@ -119,6 +121,8 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
             putExtra("fotocrianca", emergencia.fotocrianca.toString())
             putExtra("fotodoc", emergencia.fotodoc.toString())
             putExtra("status", emergencia.status.toString())
+            putExtra("latitude", emergencia.latitude!!.toDouble())
+            putExtra("longitude", emergencia.longitude!!.toDouble())
         }
 
 

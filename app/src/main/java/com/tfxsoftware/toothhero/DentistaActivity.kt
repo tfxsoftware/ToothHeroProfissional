@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -37,10 +38,7 @@ class DentistaActivity : AppCompatActivity() {
             ) {
                 // FCM SDK (and your app) can post notifications.
             } else if (shouldShowRequestPermissionRationale(android.Manifest.permission.POST_NOTIFICATIONS)) {
-                // TODO: display an educational UI explaining to the user the features that will be enabled
-                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
-                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
-                //       If the user selects "No thanks," allow the user to continue without notifications.
+                Toast.makeText(this, "Favor permita notificações para melhor funcionamento do app", Toast.LENGTH_SHORT).show()
             } else {
                 // Directly ask for the permission
                 requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
