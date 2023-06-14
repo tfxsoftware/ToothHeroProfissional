@@ -24,7 +24,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="SuaChaveDoGoogleMapsAqui" />
+            android:value="api_key_local.properties" />
 
         <activity
             android:name=".ActivityIntro"
@@ -50,6 +50,10 @@
             android:exported="false" />
 
         <activity android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DisputaActivity"
             android:exported="false" />
 
 

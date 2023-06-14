@@ -47,7 +47,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     map.addMarker(
                         MarkerOptions().title("Minha localização").position(currentLatLng!!)
                     )
+
+                    map.animateCamera(CameraUpdateFactory.zoomIn())
                     map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng!!))
+
+
                 }
             }
         } catch(e: SecurityException){
