@@ -6,39 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ListaAvaliacoesFragment">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_tight" />
+
 
     <TextView
         android:id="@+id/ReputacaoTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sua reputação: "
-        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:text="    \n   SUA \n        REPUTAÇÃO"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/purple"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylerView1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/ReputacaoTv"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numStars="6"
+        android:numStars="5"
         android:stepSize="1"
         android:rating="0"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="40dp"
         android:contentDescription="Classificação"
-        app:layout_constraintTop_toBottomOf="@id/recylerView1"
-        app:layout_constraintStart_toStartOf="@id/recylerView1"
-        app:layout_constraintEnd_toEndOf="@id/recylerView1"
+        app:layout_constraintTop_toBottomOf="@id/ReputacaoTv"
+        app:layout_constraintStart_toStartOf="@id/ReputacaoTv"
+        app:layout_constraintEnd_toEndOf="@id/ReputacaoTv"
         app:layout_constraintBottom_toTopOf="@id/tvNota"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -49,14 +52,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Carregando..."
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginStart="100dp"
+        android:textColor="@color/purple"
+        android:layout_marginStart="-300dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="@id/ReputacaoTv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ratingBar"
-        app:layout_constraintBottom_toTopOf="@id/recylerView1"
+        app:layout_constraintTop_toBottomOf="@id/ReputacaoTv"
+        app:layout_constraintBottom_toTopOf="@id/ratingBar"
         app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNota"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
