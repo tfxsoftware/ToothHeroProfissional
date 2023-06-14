@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-
 
 class ListaAvaliacoesFragment : Fragment() {
     private var dentista: Dentista? = null
@@ -26,24 +26,23 @@ class ListaAvaliacoesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_lista_avaliacoes, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val nota = view.findViewById<TextView>(R.id.tvNota)
-        ApiRequests().getDentista(FirebaseAuth.getInstance().currentUser?.uid) {
-            dentista = it
-            nota.text = dentista?.nota.toString()
-
+        val ratingBar = view.findViewById<RatingBar>(R.id.ratingBar)
+        ApiRequests().getDentista(FirebaseAuth.getInstance().currentUser?.uid) { dentista ->
+            this.dentista = dentista
+            val ratingValue = dentista?.nota?.toFloat() ?: 0.0f
+            nota.text = ratingValue.toString()
+            ratingBar.rating = ratingValue
         }
-        ApiRequests().findAvaliacoes(FirebaseAuth.getInstance().currentUser?.uid) {
-            if (it != null) {
+        ApiRequests().findAvaliacoes(FirebaseAuth.getInstance().currentUser?.uid) { avaliacoes ->
+            if (avaliacoes != null) {
                 val recyclerView = view.findViewById<RecyclerView>(R.id.recylerView1)
-                recyclerView.adapter = AvalicoesAdapter(it) { avaliacoes ->
+                recyclerView.adapter = AvalicoesAdapter(avaliacoes) { avaliacao ->
 
                 }
-
             }
         }
     }
 }
-

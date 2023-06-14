@@ -6,34 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ListaAvaliacoesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/ReputacaoTv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sua reputação: " />
+        android:layout_height="wrap_content"
+        android:text="Sua reputação: "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="72dp"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/ReputacaoTv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="6"
+        android:stepSize="1"
+        android:rating="0"
+        android:contentDescription="Classificação"
+        app:layout_constraintTop_toBottomOf="@id/recylerView1"
+        app:layout_constraintStart_toStartOf="@id/recylerView1"
+        app:layout_constraintEnd_toEndOf="@id/recylerView1"
+        app:layout_constraintBottom_toTopOf="@id/tvNota"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+
 
     <TextView
         android:id="@+id/tvNota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Carregando..."
-        app:layout_constraintBottom_toTopOf="@+id/recylerView1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="100dp"
+        app:layout_constraintStart_toStartOf="@id/ReputacaoTv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ReputacaoTv"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar"
+        app:layout_constraintBottom_toTopOf="@id/recylerView1"
         app:layout_constraintVertical_bias="0.0" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
