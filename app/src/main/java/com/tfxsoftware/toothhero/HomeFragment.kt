@@ -120,7 +120,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
             }
         }
-
+        //
         subscribeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Subscribe the user to the topic
