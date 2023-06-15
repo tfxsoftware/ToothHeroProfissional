@@ -162,7 +162,7 @@
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_ficha" />
+                            app:srcCompat="@drawable/icn_perfil" />
 
                         <TextView
                             android:id="@+id/textAtendimento"
@@ -229,7 +229,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.226"
-                            app:srcCompat="@drawable/ic_telefone" />
+                            app:srcCompat="@drawable/icn_telefone" />
 
                         <TextView
                             android:id="@+id/etTelefone"
@@ -237,7 +237,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="28dp"
                             android:layout_marginTop="5dp"
-                            android:text="Telefone do responsável: "
+                            android:text="Telefone: "
                             android:textColor="#222252"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -269,7 +269,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.213"
-                            app:srcCompat="@drawable/ic_endereco" />
+                            app:srcCompat="@drawable/icn_localizacao" />
 
                         <TextView
                             android:id="@+id/etLocalizaçao"

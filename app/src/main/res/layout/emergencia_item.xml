@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:drawableStart="@drawable/ic_cro"
+        android:drawableStart="@drawable/icn_perfil"
         android:text=" Nome:"
         android:textColor="@color/purple_500"
         android:textSize="20sp"
@@ -28,8 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_endereco"
+        android:layout_marginTop="5dp"
+        android:drawableStart="@drawable/icn_localizacao"
         android:text=" Distância:"
         android:textColor="@color/purple_500"
         android:textSize="20sp"
@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
         android:text="  KM"
         android:textColor="@color/purple_500"
         android:textSize="20sp"
@@ -53,7 +54,7 @@
         app:layout_constraintHorizontal_bias="0.124"
         app:layout_constraintStart_toEndOf="@+id/distancia"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        app:layout_constraintVertical_bias="0.703" />
 
     <TextView
         android:id="@+id/data"
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_relogio"
+        android:drawableStart="@drawable/icn_calendario"
         android:text=" Data:"
         android:textColor="@color/purple_500"
         android:textSize="20sp"
