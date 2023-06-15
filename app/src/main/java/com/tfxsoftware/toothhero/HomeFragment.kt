@@ -34,13 +34,25 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private var dentista: Dentista? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var currentLatLng: LatLng? = null
-    private lateinit var myMap: GoogleMap
+
 
     //
     override fun onMapReady(map: GoogleMap) {
-        myMap = map
-        try{
-            fusedLocationClient.lastLocation
+        Log.d("localizacao", "mapready")
+
+        if (ActivityCompat.checkSelfPermission(
+                this.requireContext(),
+                ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestLocationPermission()
+            Log.d("localizacao", "permissao negada")
+            return
+        }
+        fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 location?.let {
                     currentLatLng = LatLng(location.latitude, location.longitude)
@@ -64,10 +76,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
                 }
             }
-        } catch(e: SecurityException){
-            requestLocationPermission()
-            Log.d("localizacao", "deu erro")
-        }
+
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,6 +97,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         val botaoEncerra = view.findViewById<AppCompatButton>(R.id.btnFinalizarAtendimento)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         botaoEncerra.visibility = View.GONE
+        requestLocationPermission()
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
 
