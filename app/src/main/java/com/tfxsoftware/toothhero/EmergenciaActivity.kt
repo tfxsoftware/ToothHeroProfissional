@@ -20,7 +20,9 @@ import com.google.android.gms.tasks.OnFailureListener
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.Priority
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.tasks.CancellationTokenSource
 
 class EmergenciaActivity : AppCompatActivity() {
 
@@ -119,10 +121,24 @@ class EmergenciaActivity : AppCompatActivity() {
                             lastlocation.longitude
                         )
                         binding.tvDistanciaKm.text = distancia.toInt().toString()
+                    }else {
+                        Log.d("localizacao", "é null")
+                        fusedLocationClient.getCurrentLocation(
+                            Priority.PRIORITY_HIGH_ACCURACY,
+                            CancellationTokenSource().token
+                        ).addOnSuccessListener { location ->
+                            val lastlocation = LatLng(location.latitude, location.longitude)
+                            latitudeClient = lastlocation.latitude
+                            longitudeClient = lastlocation.longitude
+                            val distancia = calculateDistance(
+                                emergencia.latitude!!,
+                                emergencia.longitude!!,
+                                lastlocation.latitude,
+                                lastlocation.longitude
+                            )
+                            binding.tvDistanciaKm.text = distancia.toInt().toString()
+                        }
                     }
-                })
-                .addOnFailureListener(OnFailureListener { exception ->
-                    // Handle failure
                 })
         }
 

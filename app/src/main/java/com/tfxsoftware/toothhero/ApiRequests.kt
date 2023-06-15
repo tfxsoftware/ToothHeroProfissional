@@ -162,5 +162,23 @@ class ApiRequests {
                 callback(false)
             }
     }
+    fun getEmergencia(id: String?, callback: (emergencia: Emergencia?) -> Unit) {
+        val data = hashMapOf("id" to id)
+        functions
+            .getHttpsCallable("getEmergenciaById")
+            .call(data)
+            .continueWith { task ->
+                if (task.isSuccessful) {
+                    val result = task.result?.data as HashMap<*, *>?
+                    val gson = Gson()
+                    val json = gson.toJson(result)
+                    val emergencia = gson.fromJson(json, Emergencia::class.java)
+                    callback(emergencia)
+                } else {
+                    callback(null)
+
+                }
+            }
+    }
 
 }

@@ -10,7 +10,10 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.OnFailureListener
 import android.Manifest
 import android.content.pm.PackageManager
+import android.util.Log
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationTokenSource
 
 class EmergenciasViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -34,6 +37,7 @@ class EmergenciasViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
                 .addOnSuccessListener(OnSuccessListener { location ->
                     if (location != null) {
                         lastlocation = LatLng(location.latitude, location.longitude)
+                        Log.d("localizacao", lastlocation.toString())
                         val distancia = calculateDistance(
                             emergencia.latitude!!,
                             emergencia.longitude!!,
@@ -41,11 +45,26 @@ class EmergenciasViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
                             lastlocation.longitude
                         )
                         emergenciaDistancia.text = distancia.toInt().toString()
+                    } else{
+                        Log.d("localizacao", "é null")
+                        fusedLocationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY,
+                            CancellationTokenSource().token).addOnSuccessListener {location ->
+                            lastlocation = LatLng(location.latitude, location.longitude)
+                            Log.d("localizacao", lastlocation.toString())
+                            val distancia = calculateDistance(
+                                emergencia.latitude!!,
+                                emergencia.longitude!!,
+                                lastlocation.latitude,
+                                lastlocation.longitude
+                            )
+                            emergenciaDistancia.text = distancia.toInt().toString()
+                        }
                     }
                 })
                 .addOnFailureListener(OnFailureListener { exception ->
                     // Handle failure
                 })
+
         }
     }
 

@@ -1,7 +1,7 @@
 package com.tfxsoftware.toothhero
 
-import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
@@ -28,56 +29,17 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.ktx.storage
 
-class HomeFragment : Fragment(), OnMapReadyCallback {
+class HomeFragment : Fragment() {
     private val messaging = FirebaseMessaging.getInstance()
     private val auth = FirebaseAuth.getInstance()
     private var dentista: Dentista? = null
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var currentLatLng: LatLng? = null
+    private var userLocation: LatLng? = null
+    private var eid :String? = null
+
 
 
     //
-    override fun onMapReady(map: GoogleMap) {
-        Log.d("localizacao", "mapready")
 
-        if (ActivityCompat.checkSelfPermission(
-                this.requireContext(),
-                ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestLocationPermission()
-            Log.d("localizacao", "permissao negada")
-            return
-        }
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                location?.let {
-                    currentLatLng = LatLng(location.latitude, location.longitude)
-                    Log.d("localizacao", currentLatLng.toString())
-                    map.addMarker(
-                        MarkerOptions().title("Minha localização").position(currentLatLng!!)
-                    )
-                    ApiRequests().getAtendimentoEmAndamento(auth.uid){
-                        val atendimento = it
-                        if (atendimento != null){
-                            map.addMarker(
-                                MarkerOptions().position(LatLng(atendimento.latitude!!, atendimento.longitude!!)).title("Atendimento")
-                            )
-
-                        }
-                    }
-                    map.animateCamera(CameraUpdateFactory.zoomIn())
-                    map.animateCamera(CameraUpdateFactory.zoomIn())
-                    map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng!!))
-
-
-                }
-            }
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -95,11 +57,28 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         val nomeCliente = view.findViewById<TextView>(R.id.etNomeCliente)
         val textAtendimento = view.findViewById<TextView>(R.id.textAtendimento)
         val botaoEncerra = view.findViewById<AppCompatButton>(R.id.btnFinalizarAtendimento)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        val botaoMap = view.findViewById<Button>(R.id.buttonMap)
         botaoEncerra.visibility = View.GONE
-        requestLocationPermission()
-        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as? SupportMapFragment
-        mapFragment?.getMapAsync(this)
+        botaoMap.visibility = View.GONE
+        val locationPermissionRequest = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+                    // Precise location access granted.
+                }
+                permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+                    // Only approximate location access granted.
+                } else -> {
+                // No location access granted.
+            }
+            }
+        }
+
+        locationPermissionRequest.launch(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION))
+
 
 
 
@@ -132,7 +111,12 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                 textAtendimento.text = "Em atendimento"
                 telefoneCliente.text = atendimento.telefone
                 nomeCliente.text = atendimento.nome
+                userLocation = LatLng(atendimento.latitude!!, atendimento.longitude!!)
+                eid = atendimento.emergenciaId
+                Log.d("localizacao", userLocation.toString())
                 botaoEncerra.visibility = View.VISIBLE
+                botaoMap.visibility = View.VISIBLE
+
 
             }
         }
@@ -169,44 +153,28 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     telefoneCliente.text = ""
                     nomeCliente.text = ""
                     botaoEncerra.visibility = View.GONE
+                    botaoMap.visibility = View.GONE
                 }
                 else{
                     Toast.makeText(this.context, "Erro ao finalizar atendimento!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-    }
-
-    private fun hasLocationPermission(): Boolean {
-        return ActivityCompat.checkSelfPermission(
-            requireContext(),
-            ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun requestLocationPermission() {
-        ActivityCompat.requestPermissions(super.requireActivity(),
-            arrayOf(
-                ACCESS_FINE_LOCATION,
-                ACCESS_COARSE_LOCATION
-            ),
-            LOCATION_PERMISSION_REQUEST_CODE
-        )
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, handle accordingly
-            } else {
-                // Permission denied, handle accordingly
+        botaoMap.setOnClickListener {
+            val intent = Intent(this.requireContext(), MapActivity::class.java).apply{
+                action = "MapActivity"
+                putExtra("latitude", userLocation!!.latitude)
+                putExtra("longitude", userLocation!!.longitude)
+                putExtra("eid", eid)
             }
+
+            startActivity(intent)
+
         }
     }
+
+
+
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 123
