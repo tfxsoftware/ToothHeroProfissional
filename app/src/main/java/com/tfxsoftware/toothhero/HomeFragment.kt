@@ -1,9 +1,9 @@
 package com.tfxsoftware.toothhero
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Location
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -35,8 +35,17 @@ class HomeFragment : Fragment() {
     private var dentista: Dentista? = null
     private var userLocation: LatLng? = null
     private var eid :String? = null
+    fun saveBooleanToCache(context: Context, key: String, value: Boolean) {
+        val sharedPreferences = context.getSharedPreferences("my_cache", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(key, value)
+        editor.apply()
+    }
 
-
+    fun getBooleanFromCache(context: Context, key: String, defaultValue: Boolean): Boolean {
+        val sharedPreferences = context.getSharedPreferences("my_cache", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
 
     //
 
@@ -74,7 +83,9 @@ class HomeFragment : Fragment() {
             }
             }
         }
-
+        if (getBooleanFromCache(this.requireContext(), "topic", false)){
+            subscribeSwitch.isChecked = true
+        }
         locationPermissionRequest.launch(arrayOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION))
@@ -120,23 +131,26 @@ class HomeFragment : Fragment() {
 
             }
         }
-        //
+
         subscribeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Subscribe the user to the topic
                 messaging.subscribeToTopic("Emergencia")
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            saveBooleanToCache(this.requireContext(), "topic", true)
                             Toast.makeText(this.context, "Voce está disponível!", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(this.context, "Falha ao mudar disponibilidade!", Toast.LENGTH_SHORT).show()
                         }
+
                     }
             } else {
                 // Unsubscribe the user from the topic
                 messaging.unsubscribeFromTopic("Emergencia")
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            saveBooleanToCache(this.requireContext(), "topic", false)
                             Toast.makeText(this.context, "Você está indisponível!", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(this.context, "Falha ao mudar disponibilidade!", Toast.LENGTH_SHORT).show()

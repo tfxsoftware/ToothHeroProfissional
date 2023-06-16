@@ -121,8 +121,8 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
             putExtra("fotocrianca", emergencia.fotocrianca.toString())
             putExtra("fotodoc", emergencia.fotodoc.toString())
             putExtra("status", emergencia.status.toString())
-            putExtra("latitude", emergencia.latitude!!.toDouble())
-            putExtra("longitude", emergencia.longitude!!.toDouble())
+            putExtra("latitude", emergencia.latitude!!)
+            putExtra("longitude", emergencia.longitude!!)
         }
 
 
