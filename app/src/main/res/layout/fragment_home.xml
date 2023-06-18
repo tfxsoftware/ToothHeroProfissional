@@ -22,67 +22,63 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/PlanoDeFundo"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="256dp"
                     android:background="@drawable/top_dashboard_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/enfeite"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_marginTop="9dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/pic_background" />
 
                     <ImageView
                         android:id="@+id/Perfil"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/enfeite"
-                        app:layout_constraintEnd_toEndOf="@+id/enfeite"
-                        app:layout_constraintHorizontal_bias="0.47"
-                        app:layout_constraintStart_toStartOf="@+id/enfeite"
-                        app:layout_constraintTop_toTopOf="@+id/enfeite"
-                        app:layout_constraintVertical_bias="0.588"
+                        android:layout_width="192dp"
+                        android:layout_height="181dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.501"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.21"
                         app:srcCompat="@drawable/profile" />
 
                     <TextView
                         android:id="@+id/tvNomeHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Carregando..."
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@drawable/top_banner_2"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:text="Carregando..."
+                        android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/enfeite"
-                        app:layout_constraintStart_toStartOf="@+id/enfeite"
-                        app:layout_constraintTop_toBottomOf="@+id/enfeite" />
-
+                        app:layout_constraintTop_toBottomOf="@+id/Perfil"
+                        tools:layout_editor_absoluteX="0dp" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/top_banner_background"
                     android:orientation="horizontal"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/PlanoDeFundo"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/PlanoDeFundo">
+
 
                     <LinearLayout
                         android:layout_width="100dp"
@@ -105,21 +101,21 @@
                             android:id="@+id/switch1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="-35dp"
                             android:layout_marginStart="20dp"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
+                            android:layout_marginTop="-35dp"
+                            android:padding="10dp"
+                            android:text="OFF   "
                             android:textColor="@color/black"
-                            android:text="OFF   " />
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
 
 
                         <TextView
                             android:id="@+id/textOff"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="235dp"
+                            android:layout_marginStart="260dp"
                             android:layout_marginTop="-35dp"
                             android:text="ON"
                             android:textColor="@color/black"
@@ -133,10 +129,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,6 +143,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
                         android:layout_height="650dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginStart="8dp"
                         android:layout_weight="0.5"
                         android:background="@drawable/btn_main_background">
@@ -210,7 +207,7 @@
                             android:id="@+id/etNomeCliente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="50dp"
                             android:text=""
                             android:textColor="#222252"
                             android:textSize="18sp"
