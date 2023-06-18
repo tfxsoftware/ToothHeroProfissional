@@ -115,8 +115,8 @@
                             android:id="@+id/textOff"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="260dp"
-                            android:layout_marginTop="-35dp"
+                            android:layout_marginStart="232dp"
+                            android:layout_marginTop="-37dp"
                             android:text="ON"
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -142,9 +142,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
-                        android:layout_height="650dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="450dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="0.5"
                         android:background="@drawable/btn_main_background">
 
@@ -153,7 +153,7 @@
                             android:layout_width="23dp"
                             android:layout_height="23dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="58dp"
+                            android:layout_marginTop="96dp"
                             android:layout_marginEnd="4dp"
                             app:layout_constraintEnd_toStartOf="@+id/etNome"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -166,7 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="56dp"
-                            android:layout_marginTop="-240dp"
+                            android:layout_marginTop="-160dp"
                             android:text="Sem atendimento ativo"
                             android:textColor="@color/black"
                             android:textSize="25sp"
@@ -189,12 +189,13 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+
                         <TextView
                             android:id="@+id/etNome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="35dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="38dp"
+                            android:layout_marginTop="20dp"
                             android:text="Nome do responsável: "
                             android:textColor="#222252"
                             android:textSize="18sp"
@@ -202,19 +203,17 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textAtendimento" />
 
-
                         <TextView
                             android:id="@+id/etNomeCliente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="50dp"
+                            android:layout_marginStart="5dp"
                             android:text=""
                             android:textColor="#222252"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/etNome"
                             app:layout_constraintTop_toTopOf="@id/etNome" />
-
 
                         <ImageView
                             android:id="@+id/icTelefone"
@@ -225,7 +224,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.226"
+                            app:layout_constraintVertical_bias="0.265"
                             app:srcCompat="@drawable/icn_telefone" />
 
                         <TextView
@@ -233,7 +232,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="28dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="8dp"
                             android:text="Telefone: "
                             android:textColor="#222252"
                             android:textSize="18sp"
@@ -241,20 +240,18 @@
                             app:layout_constraintStart_toStartOf="@id/icTelefone"
                             app:layout_constraintTop_toBottomOf="@id/etNome" />
 
-
                         <TextView
                             android:id="@+id/eTelefoneCliente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="200dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginStart="80dp"
+                            android:layout_marginTop="8dp"
                             android:text=""
                             android:textColor="#222252"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/etTelefone"
                             app:layout_constraintTop_toBottomOf="@+id/etNomeCliente" />
-
 
                         <ImageView
                             android:id="@+id/icEndereco"
@@ -265,7 +262,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.213"
+                            app:layout_constraintVertical_bias="0.337"
                             app:srcCompat="@drawable/icn_localizacao" />
 
                         <TextView
@@ -273,7 +270,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="28dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="12dp"
                             android:text="Localização:"
                             android:textColor="#222252"
                             android:textSize="18sp"
@@ -287,30 +284,29 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="32dp"
-                            android:layout_marginTop="193dp"
                             android:background="@drawable/button_background"
                             android:text="Finalizar Atendimento"
                             android:textColor="@color/white"
                             android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.125"
+                            app:layout_constraintHorizontal_bias="0.25"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/buttonMap" />
+                            app:layout_constraintTop_toBottomOf="@+id/buttonMap"
+                            app:layout_constraintVertical_bias="0.089" />
 
                         <Button
                             android:id="@+id/buttonMap"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="21dp"
-                            android:layout_marginTop="44dp"
-                            android:layout_marginEnd="133dp"
+                            android:layout_marginTop="12dp"
                             android:layout_marginBottom="193dp"
+                            android:text="ABRIR MAPA"
                             android:textColor="@color/white"
-                            android:text="Mapa"
-                            app:layout_constraintBottom_toTopOf="@+id/btnFinalizarAtendimento"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/etLocalizaçao"
-                            app:layout_constraintTop_toBottomOf="@+id/etNome" />
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/etLocalizaçao" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
