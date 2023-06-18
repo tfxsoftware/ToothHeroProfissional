@@ -11,7 +11,7 @@ data class Dentista(
     var curriculo:String,
     var enderecos: MutableList<String>,
     var foto: String?,
-    var nota: Int
+    var nota: Double
 
 ) {
     init{

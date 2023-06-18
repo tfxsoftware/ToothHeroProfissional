@@ -82,7 +82,7 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             action = "DentistaActivity"}
 
-        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_MUTABLE)
+        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val channelId = getString(R.string.default_notification_channel_id)
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -126,7 +126,7 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
         }
 
 
-        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_MUTABLE)
+        val pendingIntent = PendingIntent.getActivity(this, 99, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val channelId = getString(R.string.default_notification_channel_id)
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
