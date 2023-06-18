@@ -143,12 +143,12 @@ class EmergenciaActivity : AppCompatActivity() {
         }
 
         binding.bAceite.setOnClickListener {
-
+            ApiRequests().getDentista(firebaseAuth.currentUser?.uid) {
                 val atendimento = Atendimento(
-                    emergencia.nome,
+                    it?.nome,
                     LocalDateTime.now().format(formatter),
                     emergencia.eid, firebaseAuth.currentUser?.uid, "Aceito",
-                    fcmtoken, emergencia.telefone, latitudeClient, longitudeClient
+                    fcmtoken, emergencia.telefone, latitudeClient, longitudeClient, emergencia.nome
                 )
                 ApiRequests().addNovoAtendimento(atendimento) { success, _ ->
                     if (success) {
@@ -158,6 +158,7 @@ class EmergenciaActivity : AppCompatActivity() {
                             .show()
                     }
                 }
+            }
                 intent.removeExtra("emergencia")
                 finish()
 

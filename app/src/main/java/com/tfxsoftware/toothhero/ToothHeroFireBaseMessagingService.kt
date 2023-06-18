@@ -31,10 +31,10 @@ class ToothHeroFireBaseMessagingService : FirebaseMessagingService() {
             Log.d(TAG, "Message Notification Body: ${it.body}")
             it.body?.let { body ->
                 remoteMessage.data.let { data ->
-                    val title = it.title // Get the title of the notification
+                    val title = it.title
 
                     if (title == "Atendimento") {
-                        // Call a different method for handling status updates
+
                         sendAtendimentoNotification(body)
                     } else {
                         val emergencia = Emergencia(
