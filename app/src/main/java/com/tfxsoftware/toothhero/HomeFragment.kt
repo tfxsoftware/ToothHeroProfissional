@@ -121,7 +121,7 @@ class HomeFragment : Fragment() {
             if (atendimento != null){
                 textAtendimento.text = "Em atendimento"
                 telefoneCliente.text = atendimento.telefone
-                nomeCliente.text = atendimento.nome
+                nomeCliente.text = atendimento.nomeSocorrista
                 userLocation = LatLng(atendimento.latitude!!, atendimento.longitude!!)
                 eid = atendimento.emergenciaId
                 Log.d("localizacao", userLocation.toString())
